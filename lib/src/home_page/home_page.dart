@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisSize: MainAxisSize.max,
             children: const [
               NavigationBar(),
-              GreetingsSection(),
+              Spacer(),
               Footer(),
             ],
           ),
