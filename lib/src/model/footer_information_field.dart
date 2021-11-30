@@ -8,7 +8,7 @@ class InformationField {
 InformationField addressInformationField = InformationField(
   title: 'Address',
   value: [
-    'HMU Library, Estavromenos, 71410, Heraklion Crete',
+    'HMU Library, Estavromenos, 71410,\nHeraklion Crete',
   ],
 );
 
