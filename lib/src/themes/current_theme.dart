@@ -26,8 +26,15 @@ class CurrentTheme with ChangeNotifier {
     return ThemeData(
       fontFamily: GoogleFonts.montserrat().fontFamily,
       brightness: _isLightTheme ? Brightness.light : Brightness.dark,
+      shadowColor: const Color(0xFF303030),
+      primaryColor: const Color(0xFFA9915D),
+      backgroundColor: const Color(0xFFF3F3F3),
+      scaffoldBackgroundColor: const Color(0xFFF3F3F3),
       textButtonTheme: textButtonTheme,
       textTheme: textTheme,
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        secondary: const Color(0xFF1A4859),
+      ),
     );
   }
 }
