@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hmu_library_website/src/widgets/navigation_bar_text_button.dart';
 
 class NavigationBar extends StatefulWidget {
   const NavigationBar({Key? key}) : super(key: key);
@@ -16,31 +17,28 @@ class _NavigationBarState extends State<NavigationBar> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          TextButton.icon(
+          const Spacer(),
+          NavigationBarTextButton(
+            string: 'Home',
             onPressed: () {},
-            icon: const Icon(Icons.home_rounded),
-            label: const Text('Home'),
           ),
-          TextButton.icon(
+          NavigationBarTextButton(
+            string: 'Sign Up',
             onPressed: () {},
-            icon: const Icon(Icons.person_add_rounded),
-            label: const Text('Sign Up'),
           ),
-          TextButton.icon(
+          NavigationBarTextButton(
+            string: 'Login',
             onPressed: () {},
-            icon: const Icon(Icons.login_rounded),
-            label: const Text('Login'),
           ),
-          TextButton.icon(
+          NavigationBarTextButton(
+            string: 'Book Catalog',
             onPressed: () {},
-            icon: const Icon(Icons.library_books_rounded),
-            label: const Text('Book Catalog'),
           ),
-          TextButton.icon(
+          NavigationBarTextButton(
+            string: 'Contact',
             onPressed: () {},
-            icon: const Icon(Icons.alternate_email_rounded),
-            label: const Text('Contact'),
           ),
+          const Spacer(),
         ],
       ),
     );
