@@ -23,6 +23,17 @@ class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
       onPressed: widget.onPressed,
       child: Text(
         widget.string ?? '',
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+          color: Color(0xFFFFFFFF),
+        ),
+      ),
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.convex,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(60)),
+        depth: 30,
+        color: const Color(0xFFA9915D),
       ),
     );
   }
