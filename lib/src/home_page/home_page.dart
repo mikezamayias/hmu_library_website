@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hmu_library_website/src/widgets/footer.dart';
 
 import '../widgets/navigation_bar.dart';
 
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          const Footer(),
         ],
       ),
     );
