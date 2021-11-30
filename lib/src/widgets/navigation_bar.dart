@@ -52,7 +52,6 @@ class _NavigationBarState extends State<NavigationBar> {
               onPressed: () {},
             ),
           ),
-          
         ],
       ),
     );
