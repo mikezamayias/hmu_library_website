@@ -1,25 +1,25 @@
-class FooterInformationField {
+class InformationField {
   String title;
   List<String> value;
 
-  FooterInformationField({required this.title, required this.value});
+  InformationField({required this.title, required this.value});
 }
 
-FooterInformationField addressFooterInformationField = FooterInformationField(
+InformationField addressInformationField = InformationField(
   title: 'Address',
   value: [
     'HMU Library, Estavromenos, 71410, Heraklion Crete',
   ],
 );
 
-FooterInformationField emailFooterInformationField = FooterInformationField(
+InformationField emailInformationField = InformationField(
   title: 'Email',
   value: [
     'libher@hmu.gr',
   ],
 );
 
-FooterInformationField telephoneFooterInformationField = FooterInformationField(
+InformationField telephoneInformationField = InformationField(
   title: 'Telephone',
   value: [
     '+30 2810 379330',
@@ -27,7 +27,7 @@ FooterInformationField telephoneFooterInformationField = FooterInformationField(
   ],
 );
 
-FooterInformationField workingHoursFooterInformationField = FooterInformationField(
+InformationField workingHoursInformationField = InformationField(
   title: 'Working Hours',
   value: [
     'Monday - Tuesday: 08:00 - 15:30',
