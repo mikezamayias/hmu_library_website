@@ -37,7 +37,7 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
             Text(
               widget.title,
               style: const TextStyle(
-                fontSize: 24,
+                fontSize: 21,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
@@ -49,10 +49,11 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: widget.value
                   .map(
-                    (value) => Text(
+                    (value) => SelectableText(
                       value,
+                      scrollPhysics: const NeverScrollableScrollPhysics(),
                       style: const TextStyle(
-                        fontSize: 30,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
