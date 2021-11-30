@@ -48,7 +48,7 @@ class _FooterState extends State<Footer> {
         children: [
           const Spacer(),
           FooterButton(
-            icon: Icons.arrow_left_rounded,
+            icon: Icons.arrow_back_rounded,
             onPressed: () => setState(() {
               _currentIndex =
                   (_currentIndex + 1) % footerInformationFields.length;
@@ -61,7 +61,7 @@ class _FooterState extends State<Footer> {
           ),
           const Spacer(),
           FooterButton(
-            icon: Icons.arrow_right_rounded,
+            icon: Icons.arrow_forward_rounded,
             onPressed: () => setState(() {
               _currentIndex =
                   (_currentIndex - 1) % footerInformationFields.length;
