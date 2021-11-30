@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class NavigationBarTextButton extends StatefulWidget {
   final VoidCallback? onPressed;
@@ -18,13 +19,10 @@ class NavigationBarTextButton extends StatefulWidget {
 class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return NeumorphicButton(
       onPressed: widget.onPressed,
-      child: Padding(
-        padding: const EdgeInsets.all(9),
-        child: Text(
-          widget.string ?? '',
-        ),
+      child: Text(
+        widget.string ?? '',
       ),
     );
   }
