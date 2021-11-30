@@ -26,14 +26,16 @@ class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
         style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w500,
-          color: Color(0xFFFFFFFF),
+          color: Colors.white,
         ),
       ),
       style: NeumorphicStyle(
-        shape: NeumorphicShape.convex,
+        shape: NeumorphicShape.flat,
         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(60)),
-        depth: 30,
+        depth: 6,
         color: const Color(0xFFA9915D),
+        lightSource: LightSource.top,
+        shadowDarkColor: const Color(0xFF1A4859),
       ),
     );
   }

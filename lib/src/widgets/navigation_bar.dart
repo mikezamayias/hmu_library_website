@@ -11,8 +11,9 @@ class NavigationBar extends StatefulWidget {
 class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: MediaQuery.of(context).size.height * 0.1,
+      color: const Color(0xFFEEE9DF),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
