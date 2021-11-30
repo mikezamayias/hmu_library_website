@@ -17,7 +17,13 @@ class _NavigationBarState extends State<NavigationBar> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const Spacer(),
+          Visibility(
+            visible: false,
+            child: NavigationBarTextButton(
+              string: 'Home',
+              onPressed: () {},
+            ),
+          ),
           NavigationBarTextButton(
             string: 'Home',
             onPressed: () {},
@@ -38,7 +44,14 @@ class _NavigationBarState extends State<NavigationBar> {
             string: 'Contact',
             onPressed: () {},
           ),
-          const Spacer(),
+          Visibility(
+            visible: false,
+            child: NavigationBarTextButton(
+              string: 'Contact',
+              onPressed: () {},
+            ),
+          ),
+          
         ],
       ),
     );
