@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hmu_library_website/src/model/footer_information_field.dart';
+import 'package:hmu_library_website/src/widgets/footer_button.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 
 import 'footer_information_field.dart';
@@ -35,26 +37,37 @@ class _FooterState extends State<Footer> {
 
   @override
   Widget build(BuildContext context) {
-    return SimpleGestureDetector(
-      onHorizontalSwipe: (direction) {
-        if (direction == SwipeDirection.left) {
-          setState(() {
-            _currentIndex =
-                (_currentIndex + 1) % footerInformationFields.length;
-          });
-        } else if (direction == SwipeDirection.right) {
-          setState(() {
-            _currentIndex =
-                (_currentIndex - 1) % footerInformationFields.length;
-          });
-        }
-      },
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.2,
-        color: const Color(0xFFEEE9DF),
-        child: Center(
-          child: footerInformationFields[_currentIndex],
-        ),
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.2,
+      color: const Color(0xFFEEE9DF),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Spacer(),
+          FooterButton(
+            icon: Icons.arrow_left_rounded,
+            onPressed: () => setState(() {
+              _currentIndex =
+                  (_currentIndex + 1) % footerInformationFields.length;
+            }),
+          ),
+          const Spacer(),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: footerInformationFields[_currentIndex],
+          ),
+          const Spacer(),
+          FooterButton(
+            icon: Icons.arrow_right_rounded,
+            onPressed: () => setState(() {
+              _currentIndex =
+                  (_currentIndex - 1) % footerInformationFields.length;
+            }),
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }
