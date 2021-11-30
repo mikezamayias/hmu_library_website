@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:hmu_library_website/src/home_page/body_information.dart';
 
 import 'greetings_section.dart';
 import '../widgets/footer.dart';
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
             children: const [
               NavigationBar(),
               GreetingsSection(),
-              GreetingsSection(),
+              BodyInformation(),
               Footer(),
             ],
           ),
