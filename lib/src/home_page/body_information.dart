@@ -18,9 +18,9 @@ class BodyInformationState extends State<BodyInformation> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
-          InformationColumn(),
-          InformationColumn(),
-          InformationColumn(),
+          InformationColumn(), // TODO: make columns have dynamic type
+          InformationColumn(), // TODO: make columns have dynamic type
+          InformationColumn(), // TODO: make columns have dynamic type
         ],
       ),
     );
