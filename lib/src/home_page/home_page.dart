@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+import 'greetings_section.dart';
 import '../widgets/footer.dart';
 import '../widgets/navigation_bar.dart';
 
@@ -20,7 +22,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisSize: MainAxisSize.max,
             children: const [
               NavigationBar(),
-              Spacer(),
+              GreetingsSection(),
               Footer(),
             ],
           ),
