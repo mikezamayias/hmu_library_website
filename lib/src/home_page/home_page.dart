@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/home_page/greetings_section.dart';
-import 'package:hmu_library_website/src/widgets/footer.dart';
 
+import '../widgets/footer.dart';
 import '../widgets/navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
