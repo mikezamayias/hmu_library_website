@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
             children: const [
               NavigationBar(),
               GreetingsSection(),
+              GreetingsSection(),
               Footer(),
             ],
           ),
