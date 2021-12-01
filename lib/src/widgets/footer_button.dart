@@ -39,7 +39,7 @@ class _FooterButtonState extends State<FooterButton> {
       child: IconButton(
         onPressed: widget.onPressed,
         icon: Icon(widget.icon),
-        color: const Color(0xFF1A4859),
+        color: Colors.white,
         iconSize: 36,
       ),
     );

@@ -48,7 +48,7 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
               style: const TextStyle(
                 fontSize: 21,
                 fontWeight: FontWeight.w500,
-                color: Color(0xFF1A4859),
+                color: Colors.white,
               ),
             ),
             const SizedBox(width: 42),
@@ -64,7 +64,7 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF1A4859),
+                        color: Colors.white,
                       ),
                     ),
                   )
