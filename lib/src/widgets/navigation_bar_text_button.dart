@@ -20,14 +20,11 @@ class NavigationBarTextButton extends StatefulWidget {
 class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 12),
-      child: ElevatedButton.icon(
-        onPressed: widget.onPressed,
-        icon: Icon(widget.icon),
-        label: Text(
-          widget.label!,
-        ),
+    return ElevatedButton.icon(
+      onPressed: widget.onPressed,
+      icon: Icon(widget.icon),
+      label: Text(
+        widget.label!,
       ),
     );
   }

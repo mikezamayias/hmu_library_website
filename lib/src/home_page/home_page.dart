@@ -14,12 +14,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        GreetingsSection(),
-        BodyInformation(),
-        Footer(),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: const AssetImage('assets/images/hmu_lib_5.jpg'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            Colors.white.withOpacity(0.72),
+            BlendMode.lighten,
+          ),
+        ),
+      ),
+      child: Column(
+        children: const [
+          GreetingsSection(),
+          BodyInformation(),
+          Footer(),
+        ],
+      ),
     );
   }
 }
