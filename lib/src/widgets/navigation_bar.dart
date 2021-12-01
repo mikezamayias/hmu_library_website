@@ -21,34 +21,41 @@ class _NavigationBarState extends State<NavigationBar> {
           Visibility(
             visible: false,
             child: NavigationBarTextButton(
-              string: 'Home',
+              label: 'Home',
+              icon: Icons.home_rounded,
               onPressed: () {},
             ),
           ),
           NavigationBarTextButton(
-            string: 'Home',
+            label: 'Home',
+            icon: Icons.home_rounded,
             onPressed: () {},
           ),
           NavigationBarTextButton(
-            string: 'Sign Up',
+            label: 'Sign Up',
+            icon: Icons.person_add_rounded,
             onPressed: () {},
           ),
           NavigationBarTextButton(
-            string: 'Login',
+            label: 'Login',
+            icon: Icons.login_rounded,
             onPressed: () {},
           ),
           NavigationBarTextButton(
-            string: 'Book Catalog',
+            label: 'Book Catalog',
+            icon: Icons.library_books_rounded,
             onPressed: () {},
           ),
           NavigationBarTextButton(
-            string: 'Contact',
+            label: 'Contact',
+            icon: Icons.alternate_email_outlined,
             onPressed: () {},
           ),
           Visibility(
             visible: false,
             child: NavigationBarTextButton(
-              string: 'Contact',
+              label: 'Contact',
+              icon: Icons.alternate_email_outlined,
               onPressed: () {},
             ),
           ),
