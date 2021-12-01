@@ -18,14 +18,23 @@ class FooterInformationField extends StatefulWidget {
 class _FooterInformationFieldState extends State<FooterInformationField> {
   @override
   Widget build(BuildContext context) {
-    return Neumorphic(
-      style: NeumorphicStyle(
-        shape: NeumorphicShape.flat,
-        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(60)),
-        depth: 6,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        border: const Border(
+          bottom: BorderSide(color: Color(0xFF1A4859), width: 3),
+          top: BorderSide(color: Color(0xFF1A4859), width: 3),
+          right: BorderSide(color: Color(0xFF1A4859), width: 3),
+          left: BorderSide(color: Color(0xFF1A4859), width: 3),
+        ),
         color: const Color(0xFFA9915D),
-        lightSource: LightSource.top,
-        shadowDarkColor: const Color(0xFF1A4859),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF1A4859).withOpacity(0.15),
+            blurRadius: 10,
+            spreadRadius: 5,
+          ),
+        ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(30),
@@ -39,7 +48,7 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
               style: const TextStyle(
                 fontSize: 21,
                 fontWeight: FontWeight.w500,
-                color: Colors.white,
+                color: Color(0xFF1A4859),
               ),
             ),
             const SizedBox(width: 42),
@@ -55,7 +64,7 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color(0xFF1A4859),
                       ),
                     ),
                   )
