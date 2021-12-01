@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:hmu_library_website/src/home_page/information_column/information_column_entry.dart';
 import 'package:hmu_library_website/src/home_page/information_column/information_column_footer.dart';
 import 'package:hmu_library_website/src/home_page/information_column/information_column_title.dart';
 
 class InformationColumn extends StatefulWidget {
-  const InformationColumn({Key? key}) : super(key: key);
+  final String columnTitle;
+
+  const InformationColumn({
+    Key? key,
+    required this.columnTitle,
+  }) : super(key: key);
 
   @override
   _InformationColumnState createState() => _InformationColumnState();
@@ -32,7 +38,7 @@ class _InformationColumnState extends State<InformationColumn> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Spacer(),
-          const InformationColumnTitle(string: 'News'),
+          InformationColumnTitle(string: widget.columnTitle),
           const Spacer(),
           InformationColumnEntry(
               entryTitle: 'Some really long line', entryDate: DateTime.now()),
@@ -42,7 +48,7 @@ class _InformationColumnState extends State<InformationColumn> {
               entryTitle: 'Some really long line', entryDate: DateTime.now()),
           const Spacer(),
           InformationColumnFooter(
-            columnName: 'news',
+            columnName: widget.columnTitle.toLowerCase(),
             onPressed: () {},
           ),
           const Spacer(),
