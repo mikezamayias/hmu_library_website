@@ -20,17 +20,21 @@ class _HomePageState extends State<HomePage> {
           image: const AssetImage('assets/images/hmu_lib_5.jpg'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            Colors.white.withOpacity(0.72),
+            Colors.white.withOpacity(0.42),
             BlendMode.lighten,
           ),
         ),
       ),
-      child: Column(
-        children: const [
-          GreetingsSection(),
-          BodyInformation(),
-          Footer(),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(90),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            GreetingsSection(),
+            SizedBox(height: 90),
+            BodyInformation(),
+          ],
+        ),
       ),
     );
   }
