@@ -41,6 +41,7 @@ class _HMULibraryWebsiteState extends State<HMULibraryWebsite> {
                   elevation: 15,
                   forceElevated: true,
                   floating: true,
+                  toolbarHeight: 90,
                 ),
                 SliverList(
                   delegate: SliverChildListDelegate(
