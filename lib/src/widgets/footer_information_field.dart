@@ -19,7 +19,7 @@ class _FooterInformationFieldState extends State<FooterInformationField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(60),
         border: const Border(
           bottom: BorderSide(color: Color(0xFF1A4859), width: 3),
           top: BorderSide(color: Color(0xFF1A4859), width: 3),
