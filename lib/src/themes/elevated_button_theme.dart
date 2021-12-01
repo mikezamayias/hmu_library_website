@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
   style: ButtonStyle(
     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-      const EdgeInsets.all(15),
+      const EdgeInsets.all(24),
     ),
     backgroundColor: MaterialStateProperty.all<Color>(
       const Color(0xFFA9915D),
@@ -22,8 +22,8 @@ ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
     )),
     textStyle: MaterialStateProperty.all<TextStyle>(
       const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w500,
+        fontSize: 21,
+        fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
     ),
