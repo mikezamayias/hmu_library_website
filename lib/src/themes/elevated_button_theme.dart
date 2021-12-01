@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
   style: ButtonStyle(
     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-      const EdgeInsets.all(24),
+      const EdgeInsets.all(15),
     ),
     backgroundColor: MaterialStateProperty.all<Color>(
       const Color(0xFFA9915D),
     ),
     shape: MaterialStateProperty.all<OutlinedBorder>(
       const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderRadius: BorderRadius.all(Radius.circular(60)),
       ),
     ),
     shadowColor: MaterialStateProperty.all<Color>(
