@@ -11,8 +11,7 @@ class BodyInformation extends StatefulWidget {
 class BodyInformationState extends State<BodyInformation> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(60),
+    return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,

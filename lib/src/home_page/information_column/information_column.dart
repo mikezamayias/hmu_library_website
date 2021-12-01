@@ -23,7 +23,7 @@ class _InformationColumnState extends State<InformationColumn> {
       height: 500,
       width: 400,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(60),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
