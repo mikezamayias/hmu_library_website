@@ -12,7 +12,7 @@ TextButtonThemeData textButtonTheme = TextButtonThemeData(
     ),
     shape: MaterialStateProperty.all<OutlinedBorder>(
       const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(60.0)),
+        borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
     ),
   ),
