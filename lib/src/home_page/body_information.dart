@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/home_page/information_column/information_column.dart';
+
+
+import 'information_column/information_column.dart';
 
 class BodyInformation extends StatefulWidget {
   const BodyInformation({Key? key}) : super(key: key);

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/model/greeting.dart';
+
+
+import '../model/greeting.dart';
 
 class GreetingsSection extends StatefulWidget {
   const GreetingsSection({Key? key}) : super(key: key);

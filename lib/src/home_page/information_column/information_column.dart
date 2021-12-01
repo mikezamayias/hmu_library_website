@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:hmu_library_website/src/home_page/information_column/information_column_entry.dart';
-import 'package:hmu_library_website/src/home_page/information_column/information_column_footer.dart';
-import 'package:hmu_library_website/src/home_page/information_column/information_column_title.dart';
+
+import 'information_column_entry.dart';
+import 'information_column_footer.dart';
+import 'information_column_title.dart';
 
 class InformationColumn extends StatefulWidget {
   final String columnTitle;
