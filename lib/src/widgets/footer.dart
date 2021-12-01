@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
-
 import '../model/footer_information_field.dart';
 import 'footer_button.dart';
 import 'footer_information_field.dart';
