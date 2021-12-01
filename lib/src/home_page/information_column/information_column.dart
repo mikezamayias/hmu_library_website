@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'information_column_entry.dart';
 import 'information_column_footer.dart';
 import 'information_column_title.dart';
@@ -25,7 +24,7 @@ class _InformationColumnState extends State<InformationColumn> {
       width: 400,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(60),
-        color: Colors.white,
+        color: Colors.white.withOpacity(0.9),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -35,24 +34,34 @@ class _InformationColumnState extends State<InformationColumn> {
         ],
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Spacer(),
           InformationColumnTitle(string: widget.columnTitle),
-          const Spacer(),
-          InformationColumnEntry(
-              entryTitle: 'Some really long line', entryDate: DateTime.now()),
-          InformationColumnEntry(
-              entryTitle: 'Some really long line', entryDate: DateTime.now()),
-          InformationColumnEntry(
-              entryTitle: 'Some really long line', entryDate: DateTime.now()),
-          const Spacer(),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              InformationColumnEntry(
+                entryTitle: 'Some really long line',
+                entryDate: DateTime.now(),
+              ),
+              InformationColumnEntry(
+                entryTitle: 'Some really long line',
+                entryDate: DateTime.now(),
+              ),
+              InformationColumnEntry(
+                entryTitle: 'Some really long line',
+                entryDate: DateTime.now(),
+              ),
+            ],
+          ),
           InformationColumnFooter(
             columnName: widget.columnTitle.toLowerCase(),
             onPressed: () {},
           ),
-          const Spacer(),
         ],
       ),
     );

@@ -16,7 +16,7 @@ class _InformationColumnTitleState extends State<InformationColumnTitle> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(30),
       child: Text(
         widget.string,
         style: const TextStyle(
