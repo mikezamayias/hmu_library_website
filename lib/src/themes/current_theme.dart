@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hmu_library_website/src/themes/eleveted_button_theme.dart';
 
 import 'text_theme.dart';
 import 'text_button_theme.dart';
@@ -35,6 +36,7 @@ class CurrentTheme with ChangeNotifier {
       colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: const Color(0xFF1A4859),
       ),
+      elevatedButtonTheme: elevatedButtonThemeData,
     );
   }
 }
