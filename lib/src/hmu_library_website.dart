@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:hmu_library_website/src/home_page/home_page.dart';
-import 'package:hmu_library_website/src/widgets/footer.dart';
-import 'package:hmu_library_website/src/widgets/navigation_bar_text_button.dart';
 
 import 'themes/current_theme.dart';
+import 'widgets/footer.dart';
+import 'widgets/navigation_bar.dart';
+import 'home_page/home_page.dart';
 
 class HMULibraryWebsite extends StatefulWidget {
   const HMULibraryWebsite({Key? key}) : super(key: key);
