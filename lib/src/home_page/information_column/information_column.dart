@@ -20,10 +20,10 @@ class _InformationColumnState extends State<InformationColumn> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 500,
       width: 400,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(30),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
