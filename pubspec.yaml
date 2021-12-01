@@ -26,3 +26,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/hmu_lib_5.jpg
+    - assets/images/hmu_logo.png
