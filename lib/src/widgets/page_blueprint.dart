@@ -5,12 +5,12 @@ import 'navigation_bar.dart';
 
 class PageBlueprint extends StatefulWidget {
   final BoxDecoration? decoration;
-  final List<Widget> children;
+  final List<Widget>? children;
 
   const PageBlueprint({
     Key? key,
     this.decoration,
-    required this.children,
+    this.children,
   }) : super(key: key);
 
   @override
@@ -36,21 +36,22 @@ class _PageBlueprintState extends State<PageBlueprint> {
                 floating: true,
                 toolbarHeight: 90,
               ),
-              SliverToBoxAdapter(
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: widget.decoration ?? const BoxDecoration(),
-                  child: Padding(
-                    padding: const EdgeInsets.all(90),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: widget.children,
+              if (widget.children != null)
+                SliverToBoxAdapter(
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: widget.decoration ?? const BoxDecoration(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(90),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: widget.children!,
+                      ),
                     ),
                   ),
                 ),
-              ),
               const SliverToBoxAdapter(
                 child: Footer(),
               ),

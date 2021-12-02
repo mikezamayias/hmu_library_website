@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../widgets/page_blueprint.dart';
 
 class BookCatalogPage extends StatefulWidget {
@@ -13,9 +12,6 @@ class BookCatalogPage extends StatefulWidget {
 class _BookCatalogPageState extends State<BookCatalogPage> {
   @override
   Widget build(BuildContext context) {
-    return const PageBlueprint(
-      decoration: null,
-      children: []
-    );
+    return const PageBlueprint();
   }
 }
