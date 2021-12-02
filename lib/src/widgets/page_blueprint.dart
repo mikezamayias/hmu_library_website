@@ -9,7 +9,7 @@ class PageBlueprint extends StatefulWidget {
 
   const PageBlueprint({
     Key? key,
-    required this.decoration,
+    this.decoration,
     required this.children,
   }) : super(key: key);
 
@@ -38,10 +38,14 @@ class _PageBlueprintState extends State<PageBlueprint> {
               ),
               SliverToBoxAdapter(
                 child: Container(
-                  decoration: widget.decoration!,
+                  alignment: Alignment.center,
+                  decoration: widget.decoration ?? const BoxDecoration(),
                   child: Padding(
                     padding: const EdgeInsets.all(90),
                     child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: widget.children,
                     ),
                   ),
