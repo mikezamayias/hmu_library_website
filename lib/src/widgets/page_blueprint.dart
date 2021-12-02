@@ -36,22 +36,22 @@ class _PageBlueprintState extends State<PageBlueprint> {
                 floating: true,
                 toolbarHeight: 90,
               ),
-              SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    Container(
-                      decoration: widget.decoration!,
-                      child: Padding(
-                        padding: const EdgeInsets.all(90),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: widget.children,
-                        ),
-                      ),
+              SliverToBoxAdapter(
+                child: Container(
+                  decoration: widget.decoration!,
+                  child: Padding(
+                    padding: const EdgeInsets.all(90),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: widget.children,
                     ),
-                    const Footer(),
-                  ],
+                  ),
                 ),
+              ),
+              const SliverToBoxAdapter(
+                child: Footer(),
               ),
             ],
           ),
