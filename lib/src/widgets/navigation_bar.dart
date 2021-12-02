@@ -30,11 +30,7 @@ class _NavigationBarState extends State<NavigationBar> {
               icon: Icons.home_rounded,
               onPressed: () => Navigator.pushReplacement(
                 context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) =>
-                      const HomePage(),
-                  transitionDuration: Duration.zero,
-                ),
+                pageRouteBuilder(const HomePage()),
               ),
             ),
           ),
@@ -43,11 +39,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.home_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    const HomePage(),
-                transitionDuration: Duration.zero,
-              ),
+              pageRouteBuilder(const HomePage()),
             ),
           ),
           NavigationBarTextButton(
@@ -55,11 +47,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.person_add_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    const SignUpPage(),
-                transitionDuration: Duration.zero,
-              ),
+              pageRouteBuilder(const SignUpPage()),
             ),
           ),
           NavigationBarTextButton(
@@ -67,11 +55,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.login_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    const LoginPage(),
-                transitionDuration: Duration.zero,
-              ),
+              pageRouteBuilder(const LoginPage()),
             ),
           ),
           NavigationBarTextButton(
@@ -79,11 +63,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.library_books_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    const BookCatalogPage(),
-                transitionDuration: Duration.zero,
-              ),
+              pageRouteBuilder(const BookCatalogPage()),
             ),
           ),
           NavigationBarTextButton(
@@ -91,11 +71,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.alternate_email_outlined,
             onPressed: () => Navigator.pushReplacement(
               context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    const ContactPage(),
-                transitionDuration: Duration.zero,
-              ),
+              pageRouteBuilder(const ContactPage()),
             ),
           ),
           Visibility(
@@ -105,16 +81,22 @@ class _NavigationBarState extends State<NavigationBar> {
               icon: Icons.home_rounded,
               onPressed: () => Navigator.pushReplacement(
                 context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) =>
-                      const HomePage(),
-                  transitionDuration: Duration.zero,
-                ),
+                pageRouteBuilder(const HomePage()),
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  PageRouteBuilder<dynamic> pageRouteBuilder(Widget _page) {
+    int _duration = 180;
+    return PageRouteBuilder(
+      pageBuilder: (context, animation1, animation2) => _page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          FadeTransition(opacity: animation, child: child),
+      transitionDuration: Duration(milliseconds: _duration),
     );
   }
 }
