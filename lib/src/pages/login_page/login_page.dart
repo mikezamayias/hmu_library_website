@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hmu_library_website/src/widgets/custom_text_form_field.dart';
 import 'package:hmu_library_website/src/widgets/navigation_bar_text_button.dart';
-
 
 import '../../widgets/page_blueprint.dart';
 
@@ -19,19 +19,19 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
       ),
       children: [
-        TextFormField(
-          decoration: const InputDecoration(
-            labelText: 'Email',
-          ),
+        const CusotmTextFormField(
+          labelText: 'Email',
         ),
-        TextFormField(
-          decoration: const InputDecoration(
-            labelText: 'Password',
-          ),
+        const CusotmTextFormField(
+          labelText: 'Password',
+          obscureText: true,
         ),
-        NavigationBarTextButton(
-          label: 'Login',
-          onPressed: () => debugPrint('Login'),
+        Padding(
+          padding: const EdgeInsets.all(15),
+          child: NavigationBarTextButton(
+            label: 'Login',
+            onPressed: () => debugPrint('Login'),
+          ),
         ),
       ],
     );
