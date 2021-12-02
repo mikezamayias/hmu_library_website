@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'footer.dart';
 import 'navigation_bar.dart';
@@ -52,6 +53,11 @@ class _PageBlueprintState extends State<PageBlueprint> {
                     ),
                   ),
                 ),
+              SliverFillRemaining(
+                hasScrollBody: false,
+                fillOverscroll: false,
+                child: Container(),
+              ),
               const SliverToBoxAdapter(
                 child: Footer(),
               ),
