@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-
+import 'pages/book_catalog_page/book_catalog_page.dart';
+import 'pages/contact_page/contact_page.dart';
+import 'pages/home_page/home_page.dart';
+import 'pages/login_page/login_page.dart';
+import 'pages/sign_up_page/sign_up_page.dart';
 import 'themes/current_theme.dart';
-import 'widgets/footer.dart';
-import 'widgets/navigation_bar.dart';
-import 'home_page/home_page.dart';
 
 class HMULibraryWebsite extends StatefulWidget {
   const HMULibraryWebsite({Key? key}) : super(key: key);
@@ -26,36 +27,15 @@ class _HMULibraryWebsiteState extends State<HMULibraryWebsite> {
       theme: CurrentTheme.lightTheme,
       darkTheme: CurrentTheme.darkTheme,
       themeMode: currentTheme.currentTheme,
+      routes: {
+        '/home': (context) => const HomePage(),
+        '/signup': (context) => const SignUpPage(),
+        '/login': (context) => const LoginPage(),
+        '/bookcatalog': (context) => const BookCatalogPage(),
+        '/contact': (context) => const ContactPage(),
+      },
+      initialRoute: '/home',
       title: 'HMU Library Website',
-      home: SafeArea(
-        child: Scaffold(
-          body: Scrollbar(
-            child: CustomScrollView(
-              slivers: [
-                const SliverAppBar(
-                  flexibleSpace: NavigationBar(),
-                  automaticallyImplyLeading: false,
-                  centerTitle: false,
-                  backgroundColor: Color(0xFFA9915D),
-                  shadowColor: Color(0xFF1A4859),
-                  elevation: 15,
-                  forceElevated: true,
-                  floating: true,
-                  toolbarHeight: 90,
-                ),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      const HomePage(),
-                      const Footer(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

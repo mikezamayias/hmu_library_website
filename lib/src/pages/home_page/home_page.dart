@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../page_blueprint/page_blueprint.dart';
+
+import '../../widgets/page_blueprint.dart';
 import 'body_information.dart';
 import 'greetings_section.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'navigation_bar_text_button.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -24,40 +23,40 @@ class _NavigationBarState extends State<NavigationBar> {
             child: NavigationBarTextButton(
               label: 'Home',
               icon: Icons.home_rounded,
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, '/home'),
             ),
           ),
           NavigationBarTextButton(
             label: 'Home',
             icon: Icons.home_rounded,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/home'),
           ),
           NavigationBarTextButton(
             label: 'Sign Up',
             icon: Icons.person_add_rounded,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/signup'),
           ),
           NavigationBarTextButton(
             label: 'Login',
             icon: Icons.login_rounded,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/login'),
           ),
           NavigationBarTextButton(
             label: 'Book Catalog',
             icon: Icons.library_books_rounded,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/bookcatalog'),
           ),
           NavigationBarTextButton(
             label: 'Contact',
             icon: Icons.alternate_email_outlined,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/contact'),
           ),
           Visibility(
             visible: false,
             child: NavigationBarTextButton(
-              label: 'Contact',
-              icon: Icons.alternate_email_outlined,
-              onPressed: () {},
+              label: 'Home',
+              icon: Icons.home_rounded,
+              onPressed: () => Navigator.pushNamed(context, '/home'),
             ),
           ),
         ],
