@@ -5,7 +5,6 @@ class CusotmTextFormField extends StatefulWidget {
   final String labelText;
   final bool? obscureText;
   final TextEditingController? controller;
-  final String? validator;
   final ValidatorType? validatorType;
   final String? confrimPassword;
 
@@ -14,7 +13,6 @@ class CusotmTextFormField extends StatefulWidget {
     required this.labelText,
     this.obscureText,
     this.controller,
-    this.validator,
     this.validatorType,
     this.confrimPassword,
   }) : super(key: key);
@@ -33,14 +31,70 @@ class _CusotmTextFormFieldState extends State<CusotmTextFormField> {
         child: TextFormField(
           decoration: InputDecoration(
             labelText: widget.labelText,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderSide: BorderSide(
+                color: Colors.grey,
+                width: 3,
+              ),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderSide: BorderSide(
+                color: Colors.grey,
+                width: 3,
+              ),
+            ),
+            errorBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 3,
+              ),
+            ),
+            focusedErrorBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 3,
+              ),
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderSide: BorderSide(
+                color: Colors.grey,
+                width: 3,
+              ),
+            ),
+            errorStyle: const TextStyle(
+              color: Colors.red,
+              fontSize: 12,
+            ),
+            errorMaxLines: 3,
+            errorText: validate(
+              widget.controller!.text,
+              widget.validatorType!,
+              widget.confrimPassword!,
+            ),
           ),
           obscureText: widget.obscureText ?? false,
-          controller: widget.controller,
+          controller: widget.controller!,
           validator: (value) => validate(
             value!,
             widget.validatorType!,
             widget.confrimPassword!,
           ),
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          onChanged: (value) => widget.controller!.text = value,
+          onEditingComplete: () {
+            widget.controller!.text = widget.controller!.text.trim();
+            FocusScope.of(context).unfocus();
+          },
+          onFieldSubmitted: (value) {
+            widget.controller!.text = value;
+            FocusScope.of(context).unfocus();
+          },
+          onTap: () => FocusScope.of(context).unfocus(),
         ),
       ),
     );
