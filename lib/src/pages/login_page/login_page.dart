@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
         NavigationBarTextButton(
           label: 'Login',
           onPressed: () => debugPrint('Login'),
-        )
+        ),
       ],
     );
   }
