@@ -12,6 +12,8 @@ class BookCatalogPage extends StatefulWidget {
 class _BookCatalogPageState extends State<BookCatalogPage> {
   @override
   Widget build(BuildContext context) {
-    return const PageBlueprint();
+    return const PageBlueprint(
+      children: [],
+    );
   }
 }

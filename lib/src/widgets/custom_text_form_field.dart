@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:hmu_library_website/src/model/validators.dart';
 
 class CusotmTextFormField extends StatefulWidget {
@@ -7,6 +8,7 @@ class CusotmTextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final ValidatorType? validatorType;
   final String? confrimPassword;
+  final String? hintText;
 
   const CusotmTextFormField({
     Key? key,
@@ -15,6 +17,7 @@ class CusotmTextFormField extends StatefulWidget {
     this.controller,
     this.validatorType,
     this.confrimPassword,
+    this.hintText,
   }) : super(key: key);
 
   @override
@@ -29,72 +32,70 @@ class _CusotmTextFormFieldState extends State<CusotmTextFormField> {
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.3,
         child: TextFormField(
-          decoration: InputDecoration(
-            labelText: widget.labelText,
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(
-                color: Colors.grey,
-                width: 3,
-              ),
-            ),
-            focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(
-                color: Colors.grey,
-                width: 3,
-              ),
-            ),
-            errorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(
-                color: Colors.red,
-                width: 3,
-              ),
-            ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(
-                color: Colors.red,
-                width: 3,
-              ),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide(
-                color: Colors.grey,
-                width: 3,
-              ),
-            ),
-            errorStyle: const TextStyle(
-              color: Colors.red,
-              fontSize: 12,
-            ),
-            errorMaxLines: 3,
-            errorText: validate(
+          expands: true,
+          maxLines: null,
+          minLines: null,
+          textAlignVertical: TextAlignVertical.center,
+          obscureText: widget.obscureText ?? false,
+          controller: widget.controller,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          onFieldSubmitted: (_) {
+            String errorMessage = validate(
               widget.controller!.text,
               widget.validatorType!,
-              widget.confrimPassword!,
-            ),
-          ),
-          obscureText: widget.obscureText ?? false,
-          controller: widget.controller!,
+              widget.confrimPassword,
+            )!;
+            if (errorMessage != 'success') {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(
+                    'Invalid ${widget.labelText}',
+                    style: const TextStyle(
+                      color: Color(0xFF1A4859),
+                    ),
+                  ),
+                  content: Text(
+                    errorMessage,
+                    style: const TextStyle(
+                      color: Color(0xFF1A4859),
+                    ),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(21),
+                  ),
+                ),
+              );
+            }
+          },
           validator: (value) => validate(
             value!,
             widget.validatorType!,
             widget.confrimPassword!,
           ),
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          onChanged: (value) => widget.controller!.text = value,
-          onEditingComplete: () {
-            widget.controller!.text = widget.controller!.text.trim();
-            FocusScope.of(context).unfocus();
-          },
-          onFieldSubmitted: (value) {
-            widget.controller!.text = value;
-            FocusScope.of(context).unfocus();
-          },
-          onTap: () => FocusScope.of(context).unfocus(),
+          cursorColor: const Color(0xFFA9915D),
+          decoration: InputDecoration(
+            hintText: widget.hintText,
+            labelText: '${widget.labelText}*',
+            floatingLabelStyle: const TextStyle(
+              color: Color(0xFF1A4859),
+              fontSize: 21,
+              fontWeight: FontWeight.w600,
+            ),
+            isDense: true,
+            errorMaxLines: 1,
+            errorText: null,
+            errorStyle: const TextStyle(
+              color: Colors.transparent,
+              fontSize: 0,
+            ),
+            alignLabelWithHint: true,
+            focusColor: const Color(0xFFA9915D),
+            labelStyle: const TextStyle(
+              color: Color(0xFF1A4859),
+            ),
+            
+          ),
         ),
       ),
     );

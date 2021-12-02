@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hmu_library_website/src/model/validators.dart';
 import 'package:hmu_library_website/src/widgets/custom_text_form_field.dart';
 import 'package:hmu_library_website/src/widgets/navigation_bar_text_button.dart';
 
@@ -12,16 +13,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return PageBlueprint(
       children: [
-        const CusotmTextFormField(
+        CusotmTextFormField(
           labelText: 'Email',
+          validatorType: ValidatorType.email,
+          controller: _emailController,
         ),
-        const CusotmTextFormField(
+        CusotmTextFormField(
           labelText: 'Password',
           obscureText: true,
+          validatorType: ValidatorType.password,
+          controller: _passwordController,
         ),
         Padding(
           padding: const EdgeInsets.all(15),

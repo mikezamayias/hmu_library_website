@@ -6,12 +6,12 @@ import 'navigation_bar.dart';
 
 class PageBlueprint extends StatefulWidget {
   final BoxDecoration? decoration;
-  final List<Widget>? children;
+  final List<Widget> children;
 
   const PageBlueprint({
     Key? key,
     this.decoration,
-    this.children,
+    required this.children,
   }) : super(key: key);
 
   @override
@@ -24,45 +24,20 @@ class _PageBlueprintState extends State<PageBlueprint> {
     return SafeArea(
       child: Scaffold(
         body: Scrollbar(
-          child: CustomScrollView(
-            slivers: [
-              const SliverAppBar(
-                flexibleSpace: NavigationBar(),
-                automaticallyImplyLeading: false,
-                centerTitle: false,
-                backgroundColor: Color(0xFFA9915D),
-                shadowColor: Color(0xFF1A4859),
-                elevation: 15,
-                forceElevated: true,
-                floating: true,
-                toolbarHeight: 90,
-              ),
-              if (widget.children != null)
-                SliverToBoxAdapter(
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: widget.decoration ?? const BoxDecoration(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(90),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: widget.children!,
-                      ),
-                    ),
+          child: Column(children: <Widget>[
+            const NavigationBar(),
+            DraggableScrollableSheet(builder: (context, scrollController) {
+              return SingleChildScrollView(
+                controller: scrollController,
+                child: Container(
+                  decoration: widget.decoration,
+                  child: Column(
+                    children: widget.children,
                   ),
                 ),
-              SliverFillRemaining(
-                hasScrollBody: false,
-                fillOverscroll: false,
-                child: Container(),
-              ),
-              const SliverToBoxAdapter(
-                child: Footer(),
-              ),
-            ],
-          ),
+              );
+            }),
+          ]),
         ),
       ),
     );
