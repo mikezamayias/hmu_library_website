@@ -41,9 +41,7 @@ class _PageBlueprintState extends State<PageBlueprint> {
                   decoration: widget.decoration!,
                   child: Padding(
                     padding: const EdgeInsets.all(90),
-                    child: Flex(
-                      mainAxisSize: MainAxisSize.max,
-                      direction: Axis.vertical,
+                    child: Column(
                       children: widget.children,
                     ),
                   ),
