@@ -21,18 +21,24 @@ class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
   @override
   Widget build(BuildContext context) {
     return widget.icon != null
-        ? ElevatedButton.icon(
-            onPressed: widget.onPressed,
-            icon: Icon(widget.icon),
-            label: Text(
-              widget.label!,
+        ? ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
+          child: ElevatedButton.icon(
+              onPressed: widget.onPressed,
+              icon: Icon(widget.icon),
+              label: Text(
+                widget.label!,
+              ),
             ),
-          )
-        : ElevatedButton(
-            onPressed: widget.onPressed,
-            child: Text(
-              widget.label!,
+        )
+        : ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
+          child: ElevatedButton(
+              onPressed: widget.onPressed,
+              child: Text(
+                widget.label!,
+              ),
             ),
-          );
+        );
   }
 }
