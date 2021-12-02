@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/home_page/body_information.dart';
 
+import '../page_blueprint/page_blueprint.dart';
+import 'body_information.dart';
 import 'greetings_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return PageBlueprint(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: const AssetImage('assets/images/hmu_lib_5.jpg'),
@@ -24,17 +25,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(90),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            GreetingsSection(),
-            SizedBox(height: 90),
-            BodyInformation(),
-          ],
-        ),
-      ),
+      children: const [
+        GreetingsSection(),
+        SizedBox(height: 90),
+        BodyInformation(),
+      ],
     );
   }
 }
