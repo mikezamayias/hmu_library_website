@@ -2,99 +2,97 @@ import 'package:flutter/material.dart';
 
 import 'package:hmu_library_website/src/model/validators.dart';
 
-class CusotmTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatefulWidget {
+  final TextEditingController controller;
+  final String fieldType;
   final String labelText;
-  final bool? obscureText;
-  final TextEditingController? controller;
-  final ValidatorType? validatorType;
-  final String? confrimPassword;
-  final String? hintText;
+  final String hintText;
 
-  const CusotmTextFormField({
+  const CustomTextFormField({
     Key? key,
+    required this.controller,
+    required this.fieldType,
     required this.labelText,
-    this.obscureText,
-    this.controller,
-    this.validatorType,
-    this.confrimPassword,
-    this.hintText,
+    required this.hintText,
   }) : super(key: key);
 
   @override
-  _CusotmTextFormFieldState createState() => _CusotmTextFormFieldState();
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
-class _CusotmTextFormFieldState extends State<CusotmTextFormField> {
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.3,
+        height: MediaQuery.of(context).size.height * 0.15,
+        width: MediaQuery.of(context).size.width * 0.24,
         child: TextFormField(
-          expands: true,
-          maxLines: null,
-          minLines: null,
-          textAlignVertical: TextAlignVertical.center,
-          obscureText: widget.obscureText ?? false,
-          controller: widget.controller,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          onFieldSubmitted: (_) {
-            String errorMessage = validate(
-              widget.controller!.text,
-              widget.validatorType!,
-              widget.confrimPassword,
-            )!;
-            if (errorMessage != 'success') {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text(
-                    'Invalid ${widget.labelText}',
-                    style: const TextStyle(
-                      color: Color(0xFF1A4859),
-                    ),
-                  ),
-                  content: Text(
-                    errorMessage,
-                    style: const TextStyle(
-                      color: Color(0xFF1A4859),
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(21),
-                  ),
-                ),
-              );
+          validator: (value) {
+            if (widget.fieldType == 'email') {
+              return isValidEmail(value!);
             }
           },
-          validator: (value) => validate(
-            value!,
-            widget.validatorType!,
-            widget.confrimPassword!,
-          ),
-          cursorColor: const Color(0xFFA9915D),
+          controller: widget.controller,
+          cursorColor: const Color(0xFF1A4859),
           decoration: InputDecoration(
+            labelText: widget.labelText,
             hintText: widget.hintText,
-            labelText: '${widget.labelText}*',
+            labelStyle: const TextStyle(
+              color: Color(0xFFA9915D),
+            ),
+            hintStyle: const TextStyle(
+              color: Color(0xFFA9915D),
+            ),
+            floatingLabelBehavior: FloatingLabelBehavior.always,
             floatingLabelStyle: const TextStyle(
               color: Color(0xFF1A4859),
-              fontSize: 21,
-              fontWeight: FontWeight.w600,
             ),
-            isDense: true,
-            errorMaxLines: 1,
-            errorText: null,
-            errorStyle: const TextStyle(
-              color: Colors.transparent,
-              fontSize: 0,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(60),
+              gapPadding: 6,
+              borderSide: const BorderSide(
+                color: Color(0xFF1A4859),
+                width: 3,
+              ),
             ),
-            alignLabelWithHint: true,
-            focusColor: const Color(0xFFA9915D),
-            labelStyle: const TextStyle(
-              color: Color(0xFF1A4859),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(60),
+              gapPadding: 6,
+              borderSide: const BorderSide(
+                color: Color(0xFF1A4859),
+                width: 3,
+              ),
             ),
-            
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(60),
+              gapPadding: 6,
+              borderSide: const BorderSide(
+                color: Color(0xFFA9915D),
+                width: 3,
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(60),
+              gapPadding: 6,
+              borderSide: BorderSide(
+                color: Colors.red.shade800,
+                width: 3,
+              ),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(60),
+              gapPadding: 6,
+              borderSide: BorderSide(
+                color: Colors.red.shade800,
+                width: 3,
+              ),
+            ),
+          ),
+          style: const TextStyle(
+            color: Color(0xFF1A4859),
           ),
         ),
       ),
