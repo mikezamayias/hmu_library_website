@@ -3,7 +3,6 @@
 * REST query that generated this json response:
 * https://books.googleapis.com/books/v1/volumes?q=%22Flutter%22&langRestrict=en&orderBy=relevance&alt=json&maxResults=18
 * */
-
 class QueryResults {
   QueryResults({
     required this.kind,
@@ -11,9 +10,9 @@ class QueryResults {
     required this.items,
   });
 
-  String kind;
-  int totalItems;
-  List<Item> items;
+  final String kind;
+  final int totalItems;
+  final List<Item> items;
 
   QueryResults copyWith({
     required String kind,
@@ -39,14 +38,14 @@ class Item {
     required this.searchInfo,
   });
 
-  Kind kind;
-  String id;
-  String etag;
-  String selfLink;
-  VolumeInfo volumeInfo;
-  SaleInfo saleInfo;
-  AccessInfo accessInfo;
-  SearchInfo searchInfo;
+  final Kind kind;
+  final String id;
+  final String etag;
+  final String selfLink;
+  final VolumeInfo volumeInfo;
+  final SaleInfo saleInfo;
+  final AccessInfo accessInfo;
+  final SearchInfo searchInfo;
 
   Item copyWith({
     required Kind kind,
@@ -84,16 +83,16 @@ class AccessInfo {
     required this.quoteSharingAllowed,
   });
 
-  Country country;
-  Viewability viewability;
-  bool embeddable;
-  bool publicDomain;
-  TextToSpeechPermission textToSpeechPermission;
-  Epub epub;
-  Pdf pdf;
-  String webReaderLink;
-  AccessViewStatus accessViewStatus;
-  bool quoteSharingAllowed;
+  final Country country;
+  final Viewability viewability;
+  final bool embeddable;
+  final bool publicDomain;
+  final TextToSpeechPermission textToSpeechPermission;
+  final Epub epub;
+  final Pdf pdf;
+  final String webReaderLink;
+  final AccessViewStatus accessViewStatus;
+  final bool quoteSharingAllowed;
 
   AccessInfo copyWith({
     required Country country,
@@ -112,7 +111,8 @@ class AccessInfo {
         viewability: viewability,
         embeddable: embeddable,
         publicDomain: publicDomain,
-        textToSpeechPermission: textToSpeechPermission,
+        textToSpeechPermission:
+            textToSpeechPermission,
         epub: epub,
         pdf: pdf,
         webReaderLink: webReaderLink,
@@ -132,9 +132,9 @@ class Epub {
     required this.downloadLink,
   });
 
-  bool isAvailable;
-  String acsTokenLink;
-  String downloadLink;
+  final bool isAvailable;
+  final String acsTokenLink;
+  final String downloadLink;
 
   Epub copyWith({
     required bool isAvailable,
@@ -154,8 +154,8 @@ class Pdf {
     required this.acsTokenLink,
   });
 
-  bool isAvailable;
-  String acsTokenLink;
+  final bool isAvailable;
+  final String acsTokenLink;
 
   Pdf copyWith({
     required bool isAvailable,
@@ -167,7 +167,7 @@ class Pdf {
       );
 }
 
-enum TextToSpeechPermission {  allowed, allowedForAccessibility }
+enum TextToSpeechPermission { allowed, allowedForAccesssibility }
 
 enum Viewability { partial, noPages, allPages }
 
@@ -184,13 +184,13 @@ class SaleInfo {
     required this.offers,
   });
 
-  Country country;
-  Saleability saleability;
-  bool isEbook;
-  SaleInfoListPrice listPrice;
-  SaleInfoListPrice retailPrice;
-  String buyLink;
-  List<Offer> offers;
+  final Country country;
+  final Saleability saleability;
+  final bool isEbook;
+  final SaleInfoListPrice listPrice;
+  final SaleInfoListPrice retailPrice;
+  final String buyLink;
+  final List<Offer> offers;
 
   SaleInfo copyWith({
     required Country country,
@@ -218,8 +218,8 @@ class SaleInfoListPrice {
     required this.currencyCode,
   });
 
-  double amount;
-  CurrencyCode currencyCode;
+  final double amount;
+  final CurrencyCode currencyCode;
 
   SaleInfoListPrice copyWith({
     required double amount,
@@ -240,9 +240,9 @@ class Offer {
     required this.retailPrice,
   });
 
-  int finskyOfferType;
-  OfferListPrice listPrice;
-  OfferListPrice retailPrice;
+  final int finskyOfferType;
+  final OfferListPrice listPrice;
+  final OfferListPrice retailPrice;
 
   Offer copyWith({
     required int finskyOfferType,
@@ -262,8 +262,8 @@ class OfferListPrice {
     required this.currencyCode,
   });
 
-  int amountInMicros;
-  CurrencyCode currencyCode;
+  final int amountInMicros;
+  final CurrencyCode currencyCode;
 
   OfferListPrice copyWith({
     required int amountInMicros,
@@ -282,7 +282,7 @@ class SearchInfo {
     required this.textSnippet,
   });
 
-  String textSnippet;
+  final String textSnippet;
 
   SearchInfo copyWith({
     required String textSnippet,
@@ -318,28 +318,28 @@ class VolumeInfo {
     required this.ratingsCount,
   });
 
-  String title;
-  String subtitle;
-  List<String> authors;
-  String publisher;
-  String publishedDate;
-  String description;
-  List<IndustryIdentifier> industryIdentifiers;
-  ReadingModes readingModes;
-  int pageCount;
-  PrintType printType;
-  List<Category> categories;
-  MaturityRating maturityRating;
-  bool allowAnonLogging;
-  String contentVersion;
-  PanelizationSummary panelizationSummary;
-  ImageLinks imageLinks;
-  Language language;
-  String previewLink;
-  String infoLink;
-  String canonicalVolumeLink;
-  int averageRating;
-  int ratingsCount;
+  final String title;
+  final String subtitle;
+  final List<String> authors;
+  final String publisher;
+  final String publishedDate;
+  final String description;
+  final List<IndustryIdentifier> industryIdentifiers;
+  final ReadingModes readingModes;
+  final int pageCount;
+  final PrintType printType;
+  final List<Category> categories;
+  final MaturityRating maturityRating;
+  final bool allowAnonLogging;
+  final String contentVersion;
+  final PanelizationSummary panelizationSummary;
+  final ImageLinks imageLinks;
+  final Language language;
+  final String previewLink;
+  final String infoLink;
+  final String canonicalVolumeLink;
+  final int averageRating;
+  final int ratingsCount;
 
   VolumeInfo copyWith({
     required String title,
@@ -391,7 +391,12 @@ class VolumeInfo {
       );
 }
 
-enum Category { computers, flutterAerodynamics, boundaryLayer }
+enum Category {
+  computers,
+  flutterAerodynamics,
+  youngAdultNonfiction,
+  boundaryLayer
+}
 
 class ImageLinks {
   ImageLinks({
@@ -399,8 +404,8 @@ class ImageLinks {
     required this.thumbnail,
   });
 
-  String smallThumbnail;
-  String thumbnail;
+  final String smallThumbnail;
+  final String thumbnail;
 
   ImageLinks copyWith({
     required String smallThumbnail,
@@ -418,8 +423,8 @@ class IndustryIdentifier {
     required this.identifier,
   });
 
-  Type type;
-  String identifier;
+  final Type type;
+  final String identifier;
 
   IndustryIdentifier copyWith({
     required Type type,
@@ -443,8 +448,8 @@ class PanelizationSummary {
     required this.containsImageBubbles,
   });
 
-  bool containsEpubBubbles;
-  bool containsImageBubbles;
+  final bool containsEpubBubbles;
+  final bool containsImageBubbles;
 
   PanelizationSummary copyWith({
     required bool containsEpubBubbles,
@@ -464,8 +469,8 @@ class ReadingModes {
     required this.image,
   });
 
-  bool text;
-  bool image;
+  final bool text;
+  final bool image;
 
   ReadingModes copyWith({
     required bool text,
