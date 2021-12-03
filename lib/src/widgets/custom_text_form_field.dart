@@ -30,11 +30,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         width: MediaQuery.of(context).size.width * 0.24,
         child: TextFormField(
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) {
-            if (widget.fieldType == 'email') {
-              return isValidEmail(value!);
-            }
-          },
+          validator: (value) => validateField[widget.fieldType](value),
           controller: widget.controller,
           cursorColor: const Color(0xFF1A4859),
           decoration: InputDecoration(

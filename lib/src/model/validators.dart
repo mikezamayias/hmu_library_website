@@ -1,5 +1,13 @@
 import 'package:validators/validators.dart';
 
+Map<String, dynamic> validateField = {
+  'email': isValidEmail,
+  'password': isValidPassword,
+  'name': isValidName,
+  'phoneNumber': isValidPhoneNumber,
+  'confirmPassword': isValidConfirmPassword,
+};
+
 String? isValidEmail(String email) {
   if (email.isEmpty) {
     return 'Email is required';
@@ -39,7 +47,7 @@ String? isValidName(String value) {
   return null;
 }
 
-String? isValidPhone(String value) {
+String? isValidPhoneNumber(String value) {
   if (value.isEmpty) {
     return 'Phone number is required';
   }
