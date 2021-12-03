@@ -4,14 +4,12 @@ import 'package:hmu_library_website/src/model/validators.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
-  final String fieldType;
   final String labelText;
   final String hintText;
 
   const CustomTextFormField({
     Key? key,
     required this.controller,
-    required this.fieldType,
     required this.labelText,
     required this.hintText,
   }) : super(key: key);
@@ -23,14 +21,18 @@ class CustomTextFormField extends StatefulWidget {
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
+    final String _fieldType = widget.labelText.toLowerCase();
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.15,
         width: MediaQuery.of(context).size.width * 0.24,
         child: TextFormField(
+          obscureText: _fieldType.toLowerCase().contains('password')
+              ? true
+              : false,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) => validateField[widget.fieldType](value),
+          validator: (value) => validateField[_fieldType](value),
           controller: widget.controller,
           cursorColor: const Color(0xFF1A4859),
           decoration: InputDecoration(
