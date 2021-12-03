@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-import '../model/footer_information_field.dart';
+import '../models/footer_information_field.dart';
 import 'footer_button.dart';
 import 'footer_information_field.dart';
 

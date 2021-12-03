@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-import '../../model/greeting.dart';
+import '../../models/greeting.dart';
 
 class GreetingsSection extends StatefulWidget {
   const GreetingsSection({Key? key}) : super(key: key);
