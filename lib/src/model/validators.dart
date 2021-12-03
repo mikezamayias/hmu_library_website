@@ -1,36 +1,5 @@
 import 'package:validators/validators.dart';
 
-enum ValidatorType {
-  email,
-  password,
-  name,
-  phone,
-  confirmPassword,
-  none,
-}
-
-String? validate(String value, ValidatorType type, String? confirmPassword) {
-  switch (type) {
-    case ValidatorType.email:
-      isValidEmail(value);
-      break;
-    case ValidatorType.password:
-      isValidPassword(value);
-      break;
-    case ValidatorType.name:
-      isValidName(value);
-      break;
-    case ValidatorType.phone:
-      isValidPhone(value);
-      break;
-    case ValidatorType.confirmPassword:
-      isValidConfirmPassword(value, confirmPassword!);
-      break;
-    default:
-      return 'Field is required';
-  }
-}
-
 String? isValidEmail(String email) {
   if (email.isEmpty) {
     return 'Email is required';
