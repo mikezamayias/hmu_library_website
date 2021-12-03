@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+
+import '../models/books.dart';
+
 class BookCard extends StatefulWidget {
   final int bookIndex;
 
@@ -39,27 +42,38 @@ class _BookCardState extends State<BookCard> {
             children: [
               Text('Book ${widget.bookIndex + 1}'),
               const Spacer(),
-              CachedNetworkImage(
-                imageUrl:
-                    'http://books.google.com/books/content?id=VXknEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Color(0xFFA9915D),
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Color(0xFF1A4859),
-                    ),
+              if (books.books[widget.bookIndex].imageUrl != null)
+                CachedNetworkImage(
+                  imageUrl: books.books[widget.bookIndex].imageUrl!,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error,
+                    color: Colors.red.shade700,
+                  ),
+                  fit: BoxFit.cover,
+                  width: 200,
+                  height: 200,
+                ),
+              const Spacer(),
+              Text(books.books[widget.bookIndex].title),
+              if (books.books[widget.bookIndex].subtitle != null)
+                Text(
+                  books.books[widget.bookIndex].subtitle!,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey.shade600,
                   ),
                 ),
-                errorWidget: (context, url, error) => Icon(
-                  Icons.error_outline_rounded,
-                  size: 60,
-                  color: Colors.red.shade700,
-                ),
-              ),
-              const Spacer(),
-              const Text('Sapiens'),
-              const Text('A Brief History of Humankind'),
-              const Text('Yuval Noah Harari'),
+                if (books.books[widget.bookIndex].authors != null)
+                  Text(
+                    books.books[widget.bookIndex].authors!.join(', '),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
             ],
           ),
         ),
