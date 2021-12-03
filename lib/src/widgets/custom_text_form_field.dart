@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hmu_library_website/src/model/validators.dart';
 
@@ -31,26 +32,35 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           obscureText: _fieldType.toLowerCase().contains('password')
               ? true
               : false,
+          textAlignVertical: TextAlignVertical.center,
+          textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) => validateField[_fieldType](value),
           controller: widget.controller,
           cursorColor: const Color(0xFF1A4859),
           decoration: InputDecoration(
+            focusColor: const Color(0xFF1A4859),
             labelText: widget.labelText,
             hintText: widget.hintText,
             labelStyle: const TextStyle(
               color: Color(0xFFA9915D),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
             hintStyle: const TextStyle(
               color: Color(0xFFA9915D),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             floatingLabelStyle: const TextStyle(
               color: Color(0xFF1A4859),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(60),
-              gapPadding: 6,
+              gapPadding: 3,
               borderSide: const BorderSide(
                 color: Color(0xFF1A4859),
                 width: 3,
@@ -58,7 +68,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(60),
-              gapPadding: 6,
+              gapPadding: 3,
               borderSide: const BorderSide(
                 color: Color(0xFF1A4859),
                 width: 3,
@@ -66,7 +76,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(60),
-              gapPadding: 6,
+              gapPadding: 3,
               borderSide: const BorderSide(
                 color: Color(0xFFA9915D),
                 width: 3,
@@ -74,7 +84,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(60),
-              gapPadding: 6,
+              gapPadding: 3,
               borderSide: BorderSide(
                 color: Colors.red.shade800,
                 width: 3,
@@ -82,15 +92,24 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(60),
-              gapPadding: 6,
+              gapPadding: 3,
               borderSide: BorderSide(
                 color: Colors.red.shade800,
                 width: 3,
               ),
             ),
+            errorMaxLines: 3,
+            errorStyle: TextStyle(
+              color: Colors.red.shade800,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          style: const TextStyle(
-            color: Color(0xFF1A4859),
+          style: TextStyle(
+            color: const Color(0xFF1A4859),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            fontFamily: GoogleFonts.firaCode().fontFamily,
           ),
         ),
       ),
