@@ -1,15 +1,14 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Books books = Books(books: []);
+String url = 'https://books.googleapis.com/books/v1/volumes?q="Flutter"+"Data Science"+"Programming"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
 
 Future<Books?> get getBooks async {
-  const String url =
-      'https://books.googleapis.com/books/v1/volumes?q=%22Flutter%22&langRestrict=en&orderBy=relevance&alt=json&maxResults=18';
   final response = await http.get(
-    Uri.parse(url),
-    headers: {"Accept": "application/json"},
+    Uri.parse(Uri.encodeFull(url)),
   );
 
   if (response.statusCode == 200) {
@@ -34,7 +33,7 @@ Future<Books?> get getBooks async {
       ));
     }
   } else {
-    print('Request failed with status: ${response.statusCode}.');
+    debugPrint('Request failed with status: ${response.statusCode}.');
   }
 }
 
@@ -54,6 +53,11 @@ class Book {
     required this.imageUrl,
     required this.categories,
   });
+
+  @override
+  String toString() {
+    return 'Book{title: $title, subtitle: $subtitle, description: $description, authors: $authors, imageUrl: $imageUrl, categories: $categories}';
+  }
 }
 
 class Books {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/widgets/book_card.dart';
 
+import '../../models/books.dart';
+import '../../widgets/book_card.dart';
 import '../../widgets/page_blueprint.dart';
 
 class BookCatalogPage extends StatefulWidget {
@@ -17,15 +18,30 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
       decoration: const BoxDecoration(color: Colors.transparent),
       child: GridView.count(
         shrinkWrap: true,
-        mainAxisSpacing: 30,
-        crossAxisSpacing: 30,
         crossAxisCount: 3,
-        children: List.generate(
-          18,
-          (index) => BookCard(
-            bookIndex: index,
+        children: [
+          SizedBox.expand(
+            child: Text(
+              url,
+              softWrap: false,
+            ),
           ),
-        ),
+          for (final book in books.books)
+            if (book.categories != null &&
+                book.categories!.contains('Computers'))
+              if (book.authors != null &&
+                  book.imageUrl != null &&
+                  book.subtitle != null &&
+                  book.description != null)
+                BookCard(
+                  title: book.title,
+                  subtitle: book.subtitle,
+                  authors: book.authors,
+                  categories: book.categories,
+                  imageUrl: book.imageUrl,
+                  description: book.description,
+                ),
+        ],
       ),
     );
   }
