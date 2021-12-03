@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../widgets/page_blueprint.dart';
 import 'body_information.dart';
 import 'greetings_section.dart';
@@ -26,11 +25,16 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      children: const [
-        GreetingsSection(),
-        SizedBox(height: 90),
-        BodyInformation(),
-      ],
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          GreetingsSection(),
+          SizedBox(height: 90),
+          BodyInformation(),
+        ],
+      ),
     );
   }
 }

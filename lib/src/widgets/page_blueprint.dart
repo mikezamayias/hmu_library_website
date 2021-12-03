@@ -6,12 +6,12 @@ import 'navigation_bar.dart';
 
 class PageBlueprint extends StatefulWidget {
   final BoxDecoration? decoration;
-  final List<Widget>? children;
+  final Widget? child;
 
   const PageBlueprint({
     Key? key,
     this.decoration,
-    this.children,
+    this.child,
   }) : super(key: key);
 
   @override
@@ -37,19 +37,14 @@ class _PageBlueprintState extends State<PageBlueprint> {
                 floating: true,
                 toolbarHeight: 90,
               ),
-              if (widget.children != null)
+              if (widget.child != null)
                 SliverToBoxAdapter(
                   child: Container(
                     alignment: Alignment.center,
                     decoration: widget.decoration ?? const BoxDecoration(),
                     child: Padding(
                       padding: const EdgeInsets.all(90),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: widget.children!,
-                      ),
+                      child: widget.child!
                     ),
                   ),
                 ),

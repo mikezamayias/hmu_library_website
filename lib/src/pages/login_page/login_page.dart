@@ -17,25 +17,30 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return PageBlueprint(
-      children: [
-        CustomTextFormField(
-          controller: _emailController,
-          labelText: 'Email',
-          hintText: 'Enter your email',
-        ),
-        CustomTextFormField(
-          controller: _passwordController,
-          labelText: 'Password',
-          hintText: 'Enter your password',
-        ),
-        Padding(
-          padding: const EdgeInsets.all(15),
-          child: NavigationBarTextButton(
-            label: 'Login',
-            onPressed: () => debugPrint('Login'),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CustomTextFormField(
+            controller: _emailController,
+            labelText: 'Email',
+            hintText: 'Enter your email',
           ),
-        ),
-      ],
+          CustomTextFormField(
+            controller: _passwordController,
+            labelText: 'Password',
+            hintText: 'Enter your password',
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: NavigationBarTextButton(
+              label: 'Login',
+              onPressed: () => debugPrint('Login'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
