@@ -20,13 +20,11 @@ class _LoginPageState extends State<LoginPage> {
       children: [
         CustomTextFormField(
           controller: _emailController,
-          fieldType: 'email',
           labelText: 'Email',
           hintText: 'Enter your email',
         ),
         CustomTextFormField(
           controller: _passwordController,
-          fieldType: 'password',
           labelText: 'Password',
           hintText: 'Enter your password',
         ),
