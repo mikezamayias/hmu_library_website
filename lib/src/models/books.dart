@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Books books = Books(books: []);
-String url = 'https://books.googleapis.com/books/v1/volumes?q="Flutter"+"Data Science"+"Programming"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
 
-Future<Books?> get getBooks async {
+Future<Books?> getBooks(String url) async {
   final response = await http.get(
     Uri.parse(Uri.encodeFull(url)),
   );
