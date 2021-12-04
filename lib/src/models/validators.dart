@@ -70,8 +70,5 @@ String? isValidConfirmPassword(String password, String confirmPassword) {
 }
 
 String? isValidSearchTerm(String value) {
-  if (value.isEmpty) {
-    return 'Enter a search term';
-  }
   return null;
 }
