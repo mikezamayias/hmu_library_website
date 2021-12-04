@@ -62,7 +62,7 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
                     child: TextButton(
                       onPressed: () async {
                         String _googleApiLink =
-                            'https://developers.google.com/books/docs/v1/getting_started#background-operations';
+                            'https://developers.google.com/books/docs/v1/getting_started';
                         if (!await launch(_googleApiLink)) {
                           throw 'Could not launch _googleApiLink';
                         }
