@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/widgets/custom_text_form_field.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hmu_library_website/src/widgets/custom_tooltip.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../widgets/custom_text_form_field.dart';
 import '../../models/books.dart';
 import '../../widgets/book_card.dart';
 import '../../widgets/page_blueprint.dart';
@@ -16,7 +19,12 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
   final TextEditingController _termController = TextEditingController();
   String url =
       'https://books.googleapis.com/books/v1/volumes?q="Flutter"+"Data Science"+"Programming"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
-  // 'https://books.googleapis.com/books/v1/volumes?q="Flutter"+"Data Science"+"Programming"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
+
+  @override
+  void initState() {
+    super.initState();
+    getBooks(url);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +39,49 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
             width: MediaQuery.of(context).size.width * 0.9,
             controller: _termController,
             labelText: 'Search Term',
-            hintText: 'Try multiple keywords! For Example, "Flutter" "Data Science" "Programming"',
-            onChanged: (value) {
-              String _newUrl = url.replaceAll(
-                RegExp(r'q=.*?&'),
-                'q="$value"&',
-              );
-              setState(() {
-                url = _newUrl;
-              });
-            },
+            hintText:
+                'Try multiple keywords! For Example, "Flutter" "Data Science" "Programming"',
+            onChanged: (value) => setState(
+              () {
+                url =
+                    'https://books.googleapis.com/books/v1/volumes?q="$value"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
+                getBooks(url);
+              },
+            ),
           ),
-          Text(
-            url,
-            softWrap: false,
+          CustomTooltip(
+            message: 'Open Google Play Books API Documentation',
+            child: GestureDetector(
+              onTap: () async {
+                String _googleApiLink =
+                    'https://developers.google.com/books/docs/v1/getting_started#background-operations';
+                if (!await launch(_googleApiLink)) {
+                  throw 'Could not launch _googleApiLink';
+                }
+              },
+              child: const Text(
+                'API call',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Color(0xFF1A4859),
+                ),
+              ),
+            ),
+          ),
+          CustomTooltip(
+            message: 'Calling Google\'s Play Books API',
+            child: Center(
+              child: Text(
+                url,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: const Color(0xFF1A4859),
+                  fontFamily: GoogleFonts.firaCode().fontFamily,
+                ),
+              ),
+            ),
           ),
           GridView.count(
             shrinkWrap: true,
