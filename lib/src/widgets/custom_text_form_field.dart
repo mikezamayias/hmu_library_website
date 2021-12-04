@@ -11,6 +11,8 @@ class CustomTextFormField extends StatefulWidget {
   final Function(String)? onChanged;
   final double? height;
   final double? width;
+  final VoidCallback? onEditingComplete;
+  final Function(String)? onFieldSubmitted;
 
   const CustomTextFormField({
     Key? key,
@@ -20,6 +22,7 @@ class CustomTextFormField extends StatefulWidget {
     this.onChanged,
     this.height,
     this.width,
+    this.onEditingComplete, this.onFieldSubmitted,
   }) : super(key: key);
 
   @override
@@ -43,6 +46,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ? true
               : false,
           onChanged: widget.onChanged ?? (value) {},
+          onEditingComplete: widget.onEditingComplete ?? () {},
+          onFieldSubmitted: widget.onFieldSubmitted ?? (value) {},
           textAlignVertical: TextAlignVertical.center,
           textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
