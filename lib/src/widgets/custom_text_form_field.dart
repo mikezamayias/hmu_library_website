@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recase/recase.dart';
 
 import 'package:hmu_library_website/src/models/validators.dart';
 
@@ -7,12 +8,18 @@ class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final String labelText;
   final String hintText;
+  final Function(String)? onChanged;
+  final double? height;
+  final double? width;
 
   const CustomTextFormField({
     Key? key,
     required this.controller,
     required this.labelText,
     required this.hintText,
+    this.onChanged,
+    this.height,
+    this.width,
   }) : super(key: key);
 
   @override
@@ -22,16 +29,20 @@ class CustomTextFormField extends StatefulWidget {
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
-    final String _fieldType = widget.labelText.toLowerCase();
+    final String _fieldType = widget.labelText.camelCase;
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.15,
-        width: MediaQuery.of(context).size.width * 0.24,
+        height: widget.height ?? MediaQuery.of(context).size.height * 0.15,
+        width: widget.width ?? MediaQuery.of(context).size.width * 0.24,
         child: TextFormField(
-          obscureText: _fieldType.toLowerCase().contains('password')
+          obscureText: _fieldType
+                  .trim()
+                  .replaceAll(RegExp(r' '), '')
+                  .contains('password')
               ? true
               : false,
+          onChanged: widget.onChanged ?? (value) {},
           textAlignVertical: TextAlignVertical.center,
           textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
