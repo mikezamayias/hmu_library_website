@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'models/books.dart';
 import 'pages/book_catalog_page/book_catalog_page.dart';
 import 'pages/contact_page/contact_page.dart';
 import 'pages/home_page/home_page.dart';
@@ -24,7 +23,6 @@ class _HMULibraryWebsiteState extends State<HMULibraryWebsite> {
 
   @override
   Widget build(BuildContext context) {
-    getBooks;
     return MaterialApp(
       theme: CurrentTheme.lightTheme,
       darkTheme: CurrentTheme.darkTheme,
