@@ -6,6 +6,7 @@ Map<String, dynamic> validateField = {
   'name': isValidName,
   'phoneNumber': isValidPhoneNumber,
   'confirmPassword': isValidConfirmPassword,
+  'searchTerm': isValidSearchTerm,
 };
 
 String? isValidEmail(String email) {
@@ -64,6 +65,13 @@ String? isValidConfirmPassword(String password, String confirmPassword) {
   }
   if (password != confirmPassword) {
     return 'Passwords do not match';
+  }
+  return null;
+}
+
+String? isValidSearchTerm(String value) {
+  if (value.isEmpty) {
+    return 'Enter a search term';
   }
   return null;
 }
