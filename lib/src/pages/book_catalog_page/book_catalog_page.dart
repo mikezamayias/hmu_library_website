@@ -18,12 +18,11 @@ class BookCatalogPage extends StatefulWidget {
 class _BookCatalogPageState extends State<BookCatalogPage> {
   final TextEditingController _termController = TextEditingController();
   String url =
-      'https://books.googleapis.com/books/v1/volumes?q="Flutter"+"Data Science"+"Programming"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
+      'https://books.googleapis.com/books/v1/volumes?q=&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
 
   @override
   void initState() {
     super.initState();
-    getBooks(url);
   }
 
   @override
@@ -40,7 +39,7 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
             controller: _termController,
             labelText: 'Search Term',
             hintText:
-                'Try multiple keywords! For Example, "Flutter" "Data Science" "Programming"',
+                'Try different keywords! For example type "Python", then "C", then "Dart", etc.',
             onChanged: (value) => setState(
               () {
                 url =
@@ -49,45 +48,62 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
               },
             ),
           ),
-          CustomTooltip(
-            message: 'Open Google Play Books API Documentation',
-            child: GestureDetector(
-              onTap: () async {
-                String _googleApiLink =
-                    'https://developers.google.com/books/docs/v1/getting_started#background-operations';
-                if (!await launch(_googleApiLink)) {
-                  throw 'Could not launch _googleApiLink';
-                }
-              },
-              child: const Text(
-                'API call',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Color(0xFF1A4859),
+          Padding(
+            padding: const EdgeInsets.all(45),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomTooltip(
+                  message: 'Opens Google Play Books API Documentation',
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: TextButton(
+                      onPressed: () async {
+                        String _googleApiLink =
+                            'https://developers.google.com/books/docs/v1/getting_started#background-operations';
+                        if (!await launch(_googleApiLink)) {
+                          throw 'Could not launch _googleApiLink';
+                        }
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(6),
+                        child: Text(
+                          'API call',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Color(0xFF1A4859),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          CustomTooltip(
-            message: 'Calling Google\'s Play Books API',
-            child: Center(
-              child: Text(
-                url,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: const Color(0xFF1A4859),
-                  fontFamily: GoogleFonts.firaCode().fontFamily,
+                CustomTooltip(
+                  message: 'Calls Google\'s Play Books API',
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Text(
+                      url,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: const Color(0xFF1A4859),
+                        fontFamily: GoogleFonts.firaCode().fontFamily,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 3,
             children: [
-              for (final book in books.books)
+              for (final book in books.books.reversed)
                 if (book.categories != null &&
                     book.categories!.contains('Computers'))
                   if (book.authors != null &&
