@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hmu_library_website/src/widgets/custom_tooltip.dart';
+import 'package:hmu_library_website/src/widgets/navigation_bar_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/custom_text_form_field.dart';
@@ -59,7 +60,8 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
                   message: 'Opens Google Play Books API Documentation',
                   child: Padding(
                     padding: const EdgeInsets.all(12),
-                    child: TextButton(
+                    child: NavigationBarTextButton(
+                      label: 'API',
                       onPressed: () async {
                         String _googleApiLink =
                             'https://developers.google.com/books/docs/v1/getting_started';
@@ -67,17 +69,6 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
                           throw 'Could not launch _googleApiLink';
                         }
                       },
-                      child: const Padding(
-                        padding: EdgeInsets.all(6),
-                        child: Text(
-                          'API call',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Color(0xFF1A4859),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ),
