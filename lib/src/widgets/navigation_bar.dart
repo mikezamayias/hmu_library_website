@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/pages/book_catalog_page/book_catalog_page.dart';
-import 'package:hmu_library_website/src/pages/contact_page/contact_page.dart';
-import 'package:hmu_library_website/src/pages/home_page/home_page.dart';
-import 'package:hmu_library_website/src/pages/login_page/login_page.dart';
-import 'package:hmu_library_website/src/pages/sign_up_page/sign_up_page.dart';
+import '../views/book_catalog_view/book_catalog_view.dart';
+import '../views/contact_view/contact_view.dart';
+import '../views/home_view/home_view.dart';
+import '../views/login_view/login_view.dart';
+import '../views/sign_up_view/sign_up_view.dart';
 
 import 'navigation_bar_text_button.dart';
 
