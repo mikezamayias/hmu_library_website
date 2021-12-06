@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NavigationBarTextButton extends StatefulWidget {
+class CustomElevatedButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final String? label;
   final IconData? icon;
 
-  const NavigationBarTextButton({
+  const CustomElevatedButton({
     Key? key,
     this.onPressed,
     this.label,
@@ -13,11 +13,11 @@ class NavigationBarTextButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _NavigationBarTextButtonState createState() =>
-      _NavigationBarTextButtonState();
+  _CustomElevatedButtonState createState() =>
+      _CustomElevatedButtonState();
 }
 
-class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
+class _CustomElevatedButtonState extends State<CustomElevatedButton> {
   @override
   Widget build(BuildContext context) {
     return widget.icon != null

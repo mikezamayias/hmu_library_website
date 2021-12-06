@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_text_form_field.dart';
-import '../../widgets/navigation_bar_text_button.dart';
+import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/page_blueprint.dart';
 
 class LoginPage extends StatefulWidget {
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Padding(
             padding: const EdgeInsets.all(15),
-            child: NavigationBarTextButton(
+            child: CustomElevatedButton(
               label: 'Login',
               onPressed: () => debugPrint('Login'),
             ),

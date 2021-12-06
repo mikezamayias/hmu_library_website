@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hmu_library_website/src/widgets/custom_tooltip.dart';
-import 'package:hmu_library_website/src/widgets/navigation_bar_text_button.dart';
+import 'package:hmu_library_website/src/widgets/custom_elevated_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/custom_text_form_field.dart';
@@ -60,7 +60,7 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
                   message: 'Opens Google Play Books API Documentation',
                   child: Padding(
                     padding: const EdgeInsets.all(12),
-                    child: NavigationBarTextButton(
+                    child: CustomElevatedButton(
                       label: 'API',
                       onPressed: () async {
                         String _googleApiLink =
