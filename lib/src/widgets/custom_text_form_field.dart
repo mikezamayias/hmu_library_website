@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
 
-import 'package:hmu_library_website/src/models/validators.dart';
+import '../models/validators.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
