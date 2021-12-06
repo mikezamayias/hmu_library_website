@@ -22,23 +22,23 @@ class _NavigationBarTextButtonState extends State<NavigationBarTextButton> {
   Widget build(BuildContext context) {
     return widget.icon != null
         ? ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(30)),
-          child: ElevatedButton.icon(
+            borderRadius: const BorderRadius.all(Radius.circular(30)),
+            child: ElevatedButton.icon(
               onPressed: widget.onPressed,
               icon: Icon(widget.icon),
               label: Text(
                 widget.label!,
               ),
             ),
-        )
+          )
         : ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(30)),
-          child: ElevatedButton(
+            borderRadius: const BorderRadius.all(Radius.circular(30)),
+            child: ElevatedButton(
               onPressed: widget.onPressed,
               child: Text(
                 widget.label!,
               ),
             ),
-        );
+          );
   }
 }

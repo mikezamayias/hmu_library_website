@@ -13,7 +13,8 @@ String? isValidEmail(String email) {
   if (email.isEmpty) {
     return 'Email is required';
   }
-  if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@edu.hmu.gr+").hasMatch(email)) {
+  if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@edu.hmu.gr+")
+      .hasMatch(email)) {
     return 'Please enter a valid HMU email';
   }
   return null;

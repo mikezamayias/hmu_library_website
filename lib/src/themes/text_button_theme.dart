@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 TextButtonThemeData textButtonTheme = TextButtonThemeData(
   style: ButtonStyle(
-    padding: MaterialStateProperty.all< EdgeInsetsGeometry>(
+    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
       const EdgeInsets.all(15),
     ),
     backgroundColor: MaterialStateProperty.all<Color>(

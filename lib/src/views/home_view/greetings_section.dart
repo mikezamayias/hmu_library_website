@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../models/greeting.dart';
 
 class GreetingsSection extends StatefulWidget {

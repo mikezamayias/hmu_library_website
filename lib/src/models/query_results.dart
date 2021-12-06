@@ -111,8 +111,7 @@ class AccessInfo {
         viewability: viewability,
         embeddable: embeddable,
         publicDomain: publicDomain,
-        textToSpeechPermission:
-            textToSpeechPermission,
+        textToSpeechPermission: textToSpeechPermission,
         epub: epub,
         pdf: pdf,
         webReaderLink: webReaderLink,

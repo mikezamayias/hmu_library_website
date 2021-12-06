@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'information_column/information_column.dart';
 
 class BodyInformation extends StatefulWidget {

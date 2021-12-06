@@ -22,7 +22,8 @@ class CustomTextFormField extends StatefulWidget {
     this.onChanged,
     this.height,
     this.width,
-    this.onEditingComplete, this.onFieldSubmitted,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   @override

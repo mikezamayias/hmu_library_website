@@ -43,9 +43,8 @@ class _PageBlueprintState extends State<PageBlueprint> {
                     alignment: Alignment.center,
                     decoration: widget.decoration ?? const BoxDecoration(),
                     child: Padding(
-                      padding: const EdgeInsets.all(90),
-                      child: widget.child!
-                    ),
+                        padding: const EdgeInsets.all(90),
+                        child: widget.child!),
                   ),
                 ),
               SliverFillRemaining(
