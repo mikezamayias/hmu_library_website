@@ -12,12 +12,56 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
+    List<bool> _isExpanded = [false, false, false];
     return PageBlueprint(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [],
+      child: Center(
+        child: ExpansionPanelList(
+          expandedHeaderPadding: EdgeInsets.all(9),
+          elevation: 9,
+          expansionCallback: (int index, bool isExpanded) {
+            setState(() {
+              _isExpanded[index] = !isExpanded;
+            });
+          },
+          children: <ExpansionPanel>[
+            ExpansionPanel(
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return const ListTile(
+                  title: Text('Name'),
+                );
+              },
+              body: const ListTile(
+                title: Text('Name'),
+              ),
+              isExpanded: _isExpanded[0],
+              canTapOnHeader: true,
+            ),
+            ExpansionPanel(
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return const ListTile(
+                  title: Text('Email'),
+                );
+              },
+              body: const ListTile(
+                title: Text('Email'),
+              ),
+              isExpanded: _isExpanded[1],
+              canTapOnHeader: true,
+            ),
+            ExpansionPanel(
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return const ListTile(
+                  title: Text('Text'),
+                );
+              },
+              body: const ListTile(
+                title: Text('Text'),
+              ),
+              isExpanded: _isExpanded[2],
+              canTapOnHeader: true,
+            ),
+          ],
+        ),
       ),
     );
   }
