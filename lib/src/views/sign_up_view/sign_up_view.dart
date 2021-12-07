@@ -66,7 +66,7 @@ class _SignUpViewState extends State<SignUpView> {
             },
             controlsBuilder: (context, {onStepContinue, onStepCancel}) {
               return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   if (_currentStep > 0)
                     CustomElevatedButton(
@@ -80,7 +80,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   if (_currentStep == getSteps().length - 1)
                     CustomElevatedButton(
-                      label: 'Finish',
+                      label: 'Sign Up',
                       onPressed: () {
                         if (_agreed && _formKey.currentState!.validate()) {
                           _showDialog(
@@ -120,8 +120,6 @@ class _SignUpViewState extends State<SignUpView> {
   List<Step> getSteps() {
     return [
       Step(
-        state: _currentStep > 0 ? StepState.editing : StepState.complete,
-        isActive: _currentStep >= 0,
         title: const Text('Credentials'),
         content: Wrap(
           children: [
@@ -154,8 +152,6 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
       Step(
-        state: _currentStep > 1 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 1,
         title: const Text('Personal Details'),
         content: Wrap(
           children: [
@@ -192,8 +188,6 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
       Step(
-        state: _currentStep > 2 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 2,
         title: const Text('Address'),
         content: Wrap(
           children: [
@@ -229,14 +223,12 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
       Step(
-        state: _currentStep > 3 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 3,
         title: const Text('Terms and Conditions'),
         content: Wrap(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
@@ -294,34 +286,6 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                 ),
               ],
-            ),
-            CustomElevatedButton(
-              label: 'Sign Up',
-              onPressed: () {
-                if (_agreed && _formKey.currentState!.validate()) {
-                  _showDialog(
-                    context,
-                    'Sign up successful',
-                    'You have signed up successfully. Please check your email to verify your account.',
-                    [
-                      CustomElevatedButton(
-                        label: 'OK',
-                        onPressed: () => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => const HomeView(),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                } else {
-                  showToast(
-                    "You must agree to Terms of Service and Privacy Policy",
-                    context: context,
-                  );
-                }
-              },
             ),
           ],
         ),

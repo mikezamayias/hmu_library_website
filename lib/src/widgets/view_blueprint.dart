@@ -19,20 +19,18 @@ class ViewBlueprint extends StatefulWidget {
 class _ViewBlueprintState extends State<ViewBlueprint> {
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              decoration: widget.decoration,
-              child: Padding(
-                padding: const EdgeInsets.all(60),
-                child: widget.child,
-              ),
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Container(
+            decoration: widget.decoration,
+            child: Padding(
+              padding: const EdgeInsets.all(60),
+              child: widget.child,
             ),
-            const Footer(),
-          ],
-        ),
+          ),
+          const Footer(),
+        ],
       ),
     );
   }

@@ -31,6 +31,14 @@ class _BookCardState extends State<BookCard> {
       onTap: () => showDialog(
         context: context,
         builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(60),
+            side: const BorderSide(
+              color: Color(0xFFA9915D),
+              width: 3.0,
+              style: BorderStyle.solid,
+            ),
+          ),
           content: Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
@@ -54,9 +62,6 @@ class _BookCardState extends State<BookCard> {
                 ),
               ],
             ),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(21),
           ),
         ),
       ),

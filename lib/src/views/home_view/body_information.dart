@@ -22,7 +22,7 @@ class BodyInformationState extends State<BodyInformation> {
             columnTitle: 'News',
           ),
           InformationColumn(
-            columnTitle: 'Announcments',
+            columnTitle: 'Announcements',
           ),
           InformationColumn(
             columnTitle: 'Events',

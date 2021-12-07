@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../widgets/custom_tooltip.dart';
-import '../../widgets/custom_elevated_button.dart';
-import '../../widgets/custom_text_form_field.dart';
 import '../../models/books.dart';
 import '../../widgets/book_card.dart';
+import '../../widgets/custom_text_form_field.dart';
 import '../../widgets/view_blueprint.dart';
 
 class BookCatalogView extends StatefulWidget {
@@ -29,67 +27,54 @@ class _BookCatalogViewState extends State<BookCatalogView> {
   @override
   Widget build(BuildContext context) {
     return ViewBlueprint(
-      decoration: const BoxDecoration(color: Colors.transparent),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CustomTextFormField(
-            width: MediaQuery.of(context).size.width * 0.9,
+            width: MediaQuery.of(context).size.width * 0.42,
             controller: _termController,
             labelText: 'Search Term',
             hintText:
                 'Try different keywords! For example type "Python", then "C", then "Dart", etc.',
             isRequiredField: true,
-            onChanged: (value) => Future.delayed(
-              const Duration(milliseconds: 150),
-              () => setState(
-                () {
-                  url =
-                      'https://books.googleapis.com/books/v1/volumes?q="$value"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
-                  getBooks(url);
-                },
-              ),
+            onChanged: (value) => setState(
+              () {
+                url =
+                    'https://books.googleapis.com/books/v1/volumes?q="$value"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
+                getBooks(url);
+              },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(45),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomTooltip(
-                  message: 'Opens Google Play Books API Documentation',
-                  child: CustomElevatedButton(
-                    label: 'API',
-                    onPressed: () async {
-                      String _googleApiLink =
-                          'https://developers.google.com/books/docs/v1/getting_started';
-                      if (!await launch(_googleApiLink)) {
-                        throw 'Could not launch _googleApiLink';
-                      }
-                    },
-                  ),
+          ListTile(
+            title: GestureDetector(
+              onTap: () async {
+                String _googleApiLink =
+                    'https://developers.google.com/books/docs/v1/getting_started';
+                if (!await launch(_googleApiLink)) {
+                  throw 'Could not launch _googleApiLink';
+                }
+              },
+              child: const Text(
+                'API',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Color(0xFF1A4859),
+                  fontWeight: FontWeight.w500,
                 ),
-                CustomTooltip(
-                  message: 'Calls Google\'s Play Books API',
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: SelectableText(
-                      url,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: const Color(0xFF1A4859),
-                        fontWeight: FontWeight.w500,
-                        fontFamily: GoogleFonts.firaCode().fontFamily,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
+            ),
+            subtitle: Text(
+              url,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 15,
+                color: const Color(0xFF1A4859),
+                fontWeight: FontWeight.w500,
+                fontFamily: GoogleFonts.firaCode().fontFamily,
+              ),
             ),
           ),
           GridView.count(

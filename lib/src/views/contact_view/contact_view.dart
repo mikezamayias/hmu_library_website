@@ -82,8 +82,7 @@ class _ContactViewState extends State<ContactView> {
               onPressed: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                  const HomeView(),
+                  builder: (BuildContext context) => const HomeView(),
                 ),
               ),
             ),
