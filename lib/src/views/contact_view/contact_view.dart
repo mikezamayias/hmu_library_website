@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hmu_library_website/src/widgets/custom_elevated_button.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
+import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 import '../../widgets/page_blueprint.dart';
 
@@ -35,25 +36,8 @@ class _ContactPageState extends State<ContactPage> {
       child: Center(
         child: Stepper(
           elevation: 9,
-          onStepCancel: () {
-            if (_currentStep > 0) {
-              setState(() {
-                _currentStep--;
-              });
-            }
-          },
-          onStepContinue: () {
-            if (_currentStep < 2) {
-              setState(() {
-                _currentStep++;
-              });
-            }
-          },
-          onStepTapped: (step) {
-            setState(() {
-              _currentStep = step;
-            });
-          },
+          onStepCancel: _incrementStep,
+          onStepContinue: _incrementStep,
           steps: <Step>[
             Step(
               title: const Text('Name'),
@@ -61,7 +45,7 @@ class _ContactPageState extends State<ContactPage> {
                 controller: _nameController,
                 hintText: 'Enter your name',
                 labelText: 'Name',
-                onFieldSubmitted: (value) => _incrementStep(),
+                onFieldSubmitted: _incrementStep(),
                 onEditingComplete: _incrementStep,
               ),
             ),
@@ -71,7 +55,7 @@ class _ContactPageState extends State<ContactPage> {
                 controller: _emailController,
                 hintText: 'Enter your email',
                 labelText: 'Email',
-                onFieldSubmitted: (value) => _incrementStep(),
+                onFieldSubmitted: _incrementStep(),
                 onEditingComplete: _incrementStep,
               ),
             ),
@@ -82,24 +66,8 @@ class _ContactPageState extends State<ContactPage> {
                 controller: _textController,
                 hintText: 'Enter your message',
                 labelText: 'Text',
-                onEditingComplete: () => showGeneralDialog(
-                  context: context,
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      Center(
-                    child: AlertDialog(
-                      title: const Text('Thank you!'),
-                      content: const Text(
-                        'Your message has been sent. We will get back to you as soon as possible.',
-                      ),
-                      actions: <Widget>[
-                        CustomElevatedButton(
-                          label: 'OK',
-                          onPressed: () => Navigator.of(context).pop(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                onFieldSubmitted: (value) => _showDialog(context),
+                onEditingComplete: () => _showDialog(context),
               ),
             ),
           ],
@@ -128,6 +96,26 @@ class _ContactPageState extends State<ContactPage> {
               ],
             );
           },
+        ),
+      ),
+    );
+  }
+
+  _showDialog(BuildContext context) {
+    return showGeneralDialog(
+      context: context,
+      pageBuilder: (context, animation, secondaryAnimation) => Center(
+        child: AlertDialog(
+          title: const Text('Thank you!'),
+          content: const Text(
+            'Your message has been sent. We will get back to you as soon as possible.',
+          ),
+          actions: <Widget>[
+            CustomElevatedButton(
+              label: 'OK',
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
         ),
       ),
     );
