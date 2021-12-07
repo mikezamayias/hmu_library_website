@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
 
 import '../models/validators.dart';
@@ -52,7 +51,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           textAlignVertical: TextAlignVertical.center,
           textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) => validateField[_fieldType](value),
+          validator: (value) =>
+              validateField[_fieldType == '' ? _fieldType : 'else'](value),
           controller: widget.controller,
           cursorColor: const Color(0xFF1A4859),
           decoration: InputDecoration(
@@ -122,11 +122,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          style: TextStyle(
-            color: const Color(0xFF1A4859),
+          style: const TextStyle(
+            color: Color(0xFF1A4859),
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            fontFamily: GoogleFonts.firaCode().fontFamily,
           ),
         ),
       ),

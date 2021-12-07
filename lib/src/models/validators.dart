@@ -7,6 +7,7 @@ Map<String, dynamic> validateField = {
   'phoneNumber': isValidPhoneNumber,
   'confirmPassword': isValidConfirmPassword,
   'searchTerm': isValidSearchTerm,
+  'else': null,
 };
 
 String? isValidEmail(String email) {
