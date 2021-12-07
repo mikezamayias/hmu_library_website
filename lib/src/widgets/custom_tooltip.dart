@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTooltip extends StatefulWidget {
+class CustomTooltip extends StatelessWidget {
   final String message;
   final Widget child;
 
@@ -11,17 +11,10 @@ class CustomTooltip extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CustomTooltip> createState() => _CustomTooltipState();
-}
-
-class _CustomTooltipState extends State<CustomTooltip> {
-  @override
   Widget build(BuildContext context) {
     return Tooltip(
-      preferBelow: true,
-      verticalOffset: 24,
       padding: const EdgeInsets.all(9),
-      message: widget.message,
+      message: message,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(60),
         color: const Color(0xFF1A4859).withOpacity(0.9),
@@ -37,7 +30,7 @@ class _CustomTooltipState extends State<CustomTooltip> {
         color: Colors.white,
         fontSize: 18,
       ),
-      child: widget.child,
+      child: child,
     );
   }
 }
