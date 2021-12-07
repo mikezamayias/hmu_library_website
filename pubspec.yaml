@@ -1,33 +1,27 @@
+---
 name: hmu_library_website
 description: A new Flutter project.
-
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
-
+publish_to: none
 version: 1.0.0+1
-
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-
+  sdk: '>=2.12.0 <3.0.0'
 dependencies:
   cached_network_image: ^3.2.0
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.4
   flutter:
     sdk: flutter
   google_fonts: ^2.1.0
   http: ^0.13.4
   recase: ^4.0.0
-  riverpod: ^1.0.1
+  riverpod: ^1.0.2
   url_launcher: ^6.0.17
   validators: ^3.0.0
-
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
-
-# The following section is specific to Flutter.
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/hmu_lib_5.jpg
-    - assets/images/hmu_logo.png
+  - assets/images/hmu_lib_5.jpg
+  - assets/images/hmu_logo.png
