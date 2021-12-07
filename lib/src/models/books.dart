@@ -13,6 +13,9 @@ Future<Books?> getBooks(String url) async {
   if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body);
     final items = jsonResponse['items'];
+    if (items == null) {
+      return null;
+    }
     for (var item in items) {
       final volumeInfo = item['volumeInfo'];
       final title = volumeInfo['title'];
