@@ -3,10 +3,10 @@ import 'package:hmu_library_website/src/views/home_view/home_view.dart';
 
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
-import '../../widgets/page_blueprint.dart';
+import '../../widgets/view_blueprint.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+class LoginView extends StatelessWidget {
+  LoginView({Key? key}) : super(key: key);
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageBlueprint(
+    return ViewBlueprint(
       child: Form(
         key: _formKey,
         child: Column(
@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const HomePage(),
+                                  const HomeView(),
                             ),
                           ),
                         ),

@@ -30,7 +30,7 @@ class _NavigationBarState extends State<NavigationBar> {
               icon: Icons.home_rounded,
               onPressed: () => Navigator.pushReplacement(
                 context,
-                pageRouteBuilder(const HomePage()),
+                pageRouteBuilder(const HomeView()),
               ),
             ),
           ),
@@ -39,7 +39,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.home_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              pageRouteBuilder(const HomePage()),
+              pageRouteBuilder(const HomeView()),
             ),
           ),
           CustomElevatedButton(
@@ -47,7 +47,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.person_add_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              pageRouteBuilder(const SignUpPage()),
+              pageRouteBuilder(const SignUpView()),
             ),
           ),
           CustomElevatedButton(
@@ -55,7 +55,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.login_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              pageRouteBuilder(LoginPage()),
+              pageRouteBuilder(LoginView()),
             ),
           ),
           CustomElevatedButton(
@@ -63,7 +63,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.library_books_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              pageRouteBuilder(const BookCatalogPage()),
+              pageRouteBuilder(const BookCatalogView()),
             ),
           ),
           CustomElevatedButton(
@@ -71,7 +71,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.alternate_email_outlined,
             onPressed: () => Navigator.pushReplacement(
               context,
-              pageRouteBuilder(const ContactPage()),
+              pageRouteBuilder(const ContactView()),
             ),
           ),
           Visibility(
@@ -81,7 +81,7 @@ class _NavigationBarState extends State<NavigationBar> {
               icon: Icons.home_rounded,
               onPressed: () => Navigator.pushReplacement(
                 context,
-                pageRouteBuilder(const HomePage()),
+                pageRouteBuilder(const HomeView()),
               ),
             ),
           ),

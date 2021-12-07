@@ -7,16 +7,16 @@ import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 import '../../models/books.dart';
 import '../../widgets/book_card.dart';
-import '../../widgets/page_blueprint.dart';
+import '../../widgets/view_blueprint.dart';
 
-class BookCatalogPage extends StatefulWidget {
-  const BookCatalogPage({Key? key}) : super(key: key);
+class BookCatalogView extends StatefulWidget {
+  const BookCatalogView({Key? key}) : super(key: key);
 
   @override
-  State<BookCatalogPage> createState() => _BookCatalogPageState();
+  State<BookCatalogView> createState() => _BookCatalogViewState();
 }
 
-class _BookCatalogPageState extends State<BookCatalogPage> {
+class _BookCatalogViewState extends State<BookCatalogView> {
   final TextEditingController _termController = TextEditingController();
   String url =
       'https://books.googleapis.com/books/v1/volumes?q=&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
@@ -28,7 +28,7 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PageBlueprint(
+    return ViewBlueprint(
       decoration: const BoxDecoration(color: Colors.transparent),
       child: Column(
         mainAxisSize: MainAxisSize.min,

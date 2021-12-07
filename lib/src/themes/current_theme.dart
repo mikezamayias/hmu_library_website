@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hmu_library_website/src/themes/tab_bar_theme.dart';
 
 import 'elevated_button_theme.dart';
 import 'text_theme.dart';
@@ -25,6 +26,7 @@ class CurrentTheme with ChangeNotifier {
 
   static ThemeData get lightTheme {
     return ThemeData(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
       fontFamily: GoogleFonts.montserrat().fontFamily,
       brightness: _isLightTheme ? Brightness.light : Brightness.dark,
       shadowColor: const Color(0xFF303030),
@@ -37,6 +39,7 @@ class CurrentTheme with ChangeNotifier {
         secondary: const Color(0xFF1A4859),
       ),
       elevatedButtonTheme: elevatedButtonThemeData,
+      tabBarTheme: tabBarTheme,
     );
   }
 }

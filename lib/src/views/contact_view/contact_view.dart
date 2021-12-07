@@ -3,16 +3,16 @@ import 'package:hmu_library_website/src/views/home_view/home_view.dart';
 
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
-import '../../widgets/page_blueprint.dart';
+import '../../widgets/view_blueprint.dart';
 
-class ContactPage extends StatefulWidget {
-  const ContactPage({Key? key}) : super(key: key);
+class ContactView extends StatefulWidget {
+  const ContactView({Key? key}) : super(key: key);
 
   @override
-  _ContactPageState createState() => _ContactPageState();
+  _ContactViewState createState() => _ContactViewState();
 }
 
-class _ContactPageState extends State<ContactPage> {
+class _ContactViewState extends State<ContactView> {
   int _currentStep = 0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
@@ -21,7 +21,7 @@ class _ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PageBlueprint(
+    return ViewBlueprint(
       child: Form(
         key: _formKey,
         child: Column(
@@ -83,7 +83,7 @@ class _ContactPageState extends State<ContactPage> {
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) =>
-                  const HomePage(),
+                  const HomeView(),
                 ),
               ),
             ),

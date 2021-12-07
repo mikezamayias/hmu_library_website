@@ -9,6 +9,10 @@ Map<String, dynamic> validateField = {
   'searchTerm': isValidSearchTerm,
   'message': isValidMessage,
   'address': isValidAddress,
+  'postalCode': isValidPostalCode,
+  'country': isValidCountry,
+  'city': isValidCity,
+  'studentId': isValidStudentId,
   'else': null,
 };
 
@@ -97,6 +101,59 @@ String? isValidMessage(String value) {
 String? isValidAddress(String value) {
   if (value.isEmpty) {
     return 'Address is required';
+  }
+  return null;
+}
+
+String? isValidPostalCode(String value) {
+  if (value.isEmpty) {
+    return 'Postal code is required';
+  }
+  if (value.length != 5) {
+    return 'Postal code must be 5 digits';
+  }
+  if (value.contains(RegExp(r'[^0-9]'))) {
+    return 'Postal code must only contain numbers';
+  }
+  return null;
+}
+
+String? isValidCountry(String value) {
+  if (value.isEmpty) {
+    return 'Country is required';
+  }
+  if (value.length < 3) {
+    return 'Country must contain at least 3 characters';
+  }
+  if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+    return 'Country must only contain letters and spaces';
+  }
+  return null;
+}
+
+String? isValidCity(String value) {
+  if (value.isEmpty) {
+    return 'City is required';
+  }
+  if (value.length < 3) {
+    return 'City must contain at least 3 characters';
+  }
+  if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+    return 'City must only contain letters and spaces';
+  }
+  return null;
+}
+
+String? isValidStudentId(String value) {
+  if (value.isEmpty) {
+    return 'Student ID is required';
+  }
+  if (value.length != 6) {
+    return 'Student ID must be 9 characters';
+  }
+  if (!RegExp(r'^[a-zA-Z]{2}[0-9]{4}$').hasMatch(value)) {
+    return 'Student ID must match the format of two letters followed by 4 '
+        'digits';
   }
   return null;
 }

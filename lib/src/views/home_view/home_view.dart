@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/page_blueprint.dart';
+import '../../widgets/view_blueprint.dart';
 import 'body_information.dart';
 import 'greetings_section.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return PageBlueprint(
+    return ViewBlueprint(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: const AssetImage('assets/images/hmu_lib_5.jpg'),
