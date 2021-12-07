@@ -27,12 +27,9 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String _fieldType =
-        validateField.keys.contains(labelText.camelCase)
-            ? labelText.camelCase
-            : 'else';
-    print('_CustomTextFormFieldState._fieldType: $_fieldType');
-    print('validateField.keys: ${validateField.keys}');
+    final String _fieldType = validateField.keys.contains(labelText.camelCase)
+        ? labelText.camelCase
+        : 'else';
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SizedBox(
@@ -48,72 +45,66 @@ class CustomTextFormField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) => validateField[_fieldType](value),
           controller: controller,
-          cursorColor: const Color(0xFF1A4859),
+          cursorColor: const Color(0xFFA9915D),
           decoration: InputDecoration(
-            focusColor: const Color(0xFF1A4859),
-            labelText: labelText,
             hintText: hintText,
-            labelStyle: const TextStyle(
-              color: Color(0xFFA9915D),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            hintStyle: const TextStyle(
-              color: Color(0xFFA9915D),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
+            labelText: labelText,
             floatingLabelStyle: const TextStyle(
               color: Color(0xFF1A4859),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+              fontSize: 21,
+              fontWeight: FontWeight.w600,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(60),
-              gapPadding: 3,
-              borderSide: const BorderSide(
-                color: Color(0xFF1A4859),
-                width: 3,
-              ),
+            isDense: true,
+            errorMaxLines: 1,
+            errorText: null,
+            errorStyle: const TextStyle(
+              color: Colors.transparent,
+              fontSize: 0,
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(60),
-              gapPadding: 3,
-              borderSide: const BorderSide(
-                color: Color(0xFF1A4859),
-                width: 3,
-              ),
+            alignLabelWithHint: true,
+            focusColor: const Color(0xFFA9915D),
+            labelStyle: const TextStyle(
+              color: Color(0xFF1A4859),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(60),
-              gapPadding: 3,
-              borderSide: const BorderSide(
+            focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
                 color: Color(0xFFA9915D),
-                width: 3,
+                width: 3.0,
+                style: BorderStyle.solid,
               ),
+              borderRadius: BorderRadius.all(Radius.circular(21)),
+            ),
+            border: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Color(0xFFA9915D),
+                width: 3.0,
+                style: BorderStyle.solid,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(21)),
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Color(0xFFA9915D),
+                width: 3.0,
+                style: BorderStyle.solid,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(21)),
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(60),
-              gapPadding: 3,
               borderSide: BorderSide(
-                color: Colors.red.shade800,
-                width: 3,
+                color: Colors.red.shade700,
+                width: 3.0,
+                style: BorderStyle.solid,
               ),
+              borderRadius: const BorderRadius.all(Radius.circular(21)),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(60),
-              gapPadding: 3,
               borderSide: BorderSide(
-                color: Colors.red.shade800,
-                width: 3,
+                color: Colors.red.shade700,
+                width: 3.0,
+                style: BorderStyle.solid,
               ),
-            ),
-            errorMaxLines: 3,
-            errorStyle: TextStyle(
-              color: Colors.red.shade800,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
+              borderRadius: const BorderRadius.all(Radius.circular(21)),
             ),
           ),
           style: const TextStyle(
