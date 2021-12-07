@@ -5,7 +5,6 @@ import '../views/contact_view/contact_view.dart';
 import '../views/home_view/home_view.dart';
 import '../views/login_view/login_view.dart';
 import '../views/sign_up_view/sign_up_view.dart';
-
 import 'custom_elevated_button.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -56,7 +55,7 @@ class _NavigationBarState extends State<NavigationBar> {
             icon: Icons.login_rounded,
             onPressed: () => Navigator.pushReplacement(
               context,
-              pageRouteBuilder(const LoginPage()),
+              pageRouteBuilder(LoginPage()),
             ),
           ),
           CustomElevatedButton(

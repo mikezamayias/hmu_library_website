@@ -30,7 +30,7 @@ class _HMULibraryWebsiteState extends State<HMULibraryWebsite> {
       routes: {
         '/home': (context) => const HomePage(),
         '/signup': (context) => const SignUpPage(),
-        '/login': (context) => const LoginPage(),
+        '/login': (context) => LoginPage(),
         '/bookcatalog': (context) => const BookCatalogPage(),
         '/contact': (context) => const ContactPage(),
       },
