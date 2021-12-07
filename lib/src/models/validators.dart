@@ -7,6 +7,7 @@ Map<String, dynamic> validateField = {
   'phoneNumber': isValidPhoneNumber,
   'confirmPassword': isValidConfirmPassword,
   'searchTerm': isValidSearchTerm,
+  'message': isValidMessage,
   'else': null,
 };
 
@@ -73,5 +74,21 @@ String? isValidConfirmPassword(String password, String confirmPassword) {
 }
 
 String? isValidSearchTerm(String value) {
+  if (value.isEmpty) {
+    return 'Search term is required';
+  }
+  return null;
+}
+
+String? isValidMessage(String value) {
+  if (value.isEmpty) {
+    return 'Message is required';
+  }
+  if (value.length < 10) {
+    return 'Message must be at least 10 characters';
+  }
+  if (value.length > 500) {
+    return 'Message must be less than 500 characters';
+  }
   return null;
 }
