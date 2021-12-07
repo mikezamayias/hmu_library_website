@@ -17,8 +17,16 @@ class _ContactPageState extends State<ContactPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
 
-  doStep(int step) {
-    setState(() => _currentStep += step);
+  _incrementStep() {
+    if (_currentStep < 2) {
+      if (_nameController.text.isNotEmpty &&
+          _emailController.text.isNotEmpty &&
+          _textController.text.isNotEmpty) {
+        setState(() {
+          _currentStep++;
+        });
+      }
+    }
   }
 
   @override
@@ -29,12 +37,16 @@ class _ContactPageState extends State<ContactPage> {
           elevation: 9,
           onStepCancel: () {
             if (_currentStep > 0) {
-              setState(() => doStep(-1));
+              setState(() {
+                _currentStep--;
+              });
             }
           },
           onStepContinue: () {
             if (_currentStep < 2) {
-              setState(() => doStep(1));
+              setState(() {
+                _currentStep++;
+              });
             }
           },
           onStepTapped: (step) {
@@ -48,7 +60,9 @@ class _ContactPageState extends State<ContactPage> {
               content: CustomTextFormField(
                 controller: _nameController,
                 hintText: 'Enter your name',
-                labelText: '',
+                labelText: 'Name',
+                onFieldSubmitted: (value) => _incrementStep(),
+                onEditingComplete: _incrementStep,
               ),
             ),
             Step(
@@ -56,7 +70,9 @@ class _ContactPageState extends State<ContactPage> {
               content: CustomTextFormField(
                 controller: _emailController,
                 hintText: 'Enter your email',
-                labelText: '',
+                labelText: 'Email',
+                onFieldSubmitted: (value) => _incrementStep(),
+                onEditingComplete: _incrementStep,
               ),
             ),
             Step(
@@ -65,7 +81,25 @@ class _ContactPageState extends State<ContactPage> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 controller: _textController,
                 hintText: 'Enter your message',
-                labelText: '',
+                labelText: 'Text',
+                onEditingComplete: () => showGeneralDialog(
+                  context: context,
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      Center(
+                    child: AlertDialog(
+                      title: const Text('Thank you!'),
+                      content: const Text(
+                        'Your message has been sent. We will get back to you as soon as possible.',
+                      ),
+                      actions: <Widget>[
+                        CustomElevatedButton(
+                          label: 'OK',
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
@@ -88,7 +122,7 @@ class _ContactPageState extends State<ContactPage> {
                   padding: const EdgeInsets.all(15),
                   child: CustomElevatedButton(
                     onPressed: onStepContinue,
-                    label: _currentStep != 2 ? 'Continue' : 'Send',
+                    label: _currentStep != 2 ? 'Continue' : 'Submit',
                   ),
                 ),
               ],
