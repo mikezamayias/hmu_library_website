@@ -22,12 +22,16 @@ class BookFieldInformation extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      subtitle: SelectableText(
-        content,
-        style: TextStyle(
-          color: const Color(0xFF1A4859),
-          fontSize: 21,
-          fontFamily: GoogleFonts.gfsDidot().fontFamily,
+      subtitle: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 9),
+        child: SelectableText(
+          content,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: const Color(0xFF1A4859),
+            fontSize: 21,
+            fontFamily: GoogleFonts.gfsDidot().fontFamily,
+          ),
         ),
       ),
     );
