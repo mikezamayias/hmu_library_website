@@ -10,6 +10,7 @@ dependencies:
   cupertino_icons: ^1.0.4
   flutter:
     sdk: flutter
+  flutter_styled_toast: ^2.0.0
   google_fonts: ^2.1.0
   http: ^0.13.4
   recase: ^4.0.0
@@ -23,5 +24,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-  - assets/images/hmu_lib_5.jpg
-  - assets/images/hmu_logo.png
+    - assets/images/hmu_lib_5.jpg
+    - assets/images/hmu_logo.png
