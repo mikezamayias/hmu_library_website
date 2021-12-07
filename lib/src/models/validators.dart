@@ -13,10 +13,8 @@ Map<String, dynamic> validateField = {
 String? isValidEmail(String email) {
   if (email.isEmpty) {
     return 'Email is required';
-  }
-  if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@edu.hmu.gr+")
-      .hasMatch(email)) {
-    return 'Please enter a valid HMU email';
+  } else if (!isEmail(email)) {
+    return 'Email is invalid';
   }
   return null;
 }
@@ -44,6 +42,9 @@ String? isValidName(String value) {
   }
   if (value.contains(RegExp(r'[^a-zA-Z\s]'))) {
     return 'Name must only contain letters';
+  }
+  if (!RegExp(r'\s').hasMatch(value)) {
+    return 'Name must contain at least one space';
   }
   return null;
 }
