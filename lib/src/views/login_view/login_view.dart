@@ -8,7 +8,7 @@ import '../../widgets/page_blueprint.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   static final TextEditingController _passwordController =
       TextEditingController();
@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageBlueprint(
       child: Form(
-        key: formKey,
+        key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -27,20 +27,22 @@ class LoginPage extends StatelessWidget {
               controller: _emailController,
               labelText: 'Email',
               hintText: 'Enter your email',
-              onChanged: (value) => formKey.currentState!.save(),
+              isRequiredField: true,
+              onChanged: (value) => _formKey.currentState!.save(),
             ),
             CustomTextFormField(
               controller: _passwordController,
               labelText: 'Password',
               hintText: 'Enter your password',
-              onChanged: (value) => formKey.currentState!.save(),
+              isRequiredField: true,
+              onChanged: (value) => _formKey.currentState!.save(),
             ),
             Padding(
               padding: const EdgeInsets.all(15),
               child: CustomElevatedButton(
                 label: 'Login',
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {
+                  if (_formKey.currentState!.validate()) {
                     _showDialog(
                       context,
                       'Login Successful',

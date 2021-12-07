@@ -41,6 +41,7 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
             labelText: 'Search Term',
             hintText:
                 'Try different keywords! For example type "Python", then "C", then "Dart", etc.',
+            isRequiredField: true,
             onChanged: (value) => Future.delayed(
               const Duration(milliseconds: 150),
               () => setState(

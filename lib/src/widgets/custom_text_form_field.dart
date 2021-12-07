@@ -7,6 +7,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final String hintText;
+  final bool isRequiredField;
   final Function(String)? onChanged;
   final double? height;
   final double? width;
@@ -18,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     required this.labelText,
     required this.hintText,
+    required this.isRequiredField,
     this.onChanged,
     this.height,
     this.width,
@@ -48,7 +50,7 @@ class CustomTextFormField extends StatelessWidget {
           cursorColor: const Color(0xFFA9915D),
           decoration: InputDecoration(
             hintText: hintText,
-            labelText: labelText,
+            labelText: isRequiredField ? '$labelText*' : labelText,
             floatingLabelStyle: const TextStyle(
               color: Color(0xFF1A4859),
               fontSize: 21,
