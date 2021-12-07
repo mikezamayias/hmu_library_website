@@ -40,7 +40,10 @@ class CustomTextFormField extends StatelessWidget {
         height: height ?? MediaQuery.of(context).size.height * 0.15,
         width: width ?? MediaQuery.of(context).size.width * 0.24,
         child: TextFormField(
-          obscureText: _fieldType.contains('password') ? true : false,
+          obscureText:
+              _fieldType.contains('password') || _fieldType.contains('Password')
+                  ? true
+                  : false,
           onChanged: onChanged ?? (value) {},
           onEditingComplete: onEditingComplete ?? () {},
           onFieldSubmitted: onFieldSubmitted ?? (value) {},
@@ -48,7 +51,8 @@ class CustomTextFormField extends StatelessWidget {
           textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: confirmPassword != null
-              ? (value) => validateField[labelText.camelCase](value, confirmPassword)
+              ? (value) =>
+                  validateField[labelText.camelCase](value, confirmPassword)
               : (value) => validateField[_fieldType](value),
           controller: controller,
           cursorColor: const Color(0xFFA9915D),
@@ -77,7 +81,7 @@ class CustomTextFormField extends StatelessWidget {
                 width: 3.0,
                 style: BorderStyle.solid,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(21)),
+              borderRadius: BorderRadius.all(Radius.circular(60)),
             ),
             border: const OutlineInputBorder(
               borderSide: BorderSide(
@@ -85,7 +89,7 @@ class CustomTextFormField extends StatelessWidget {
                 width: 3.0,
                 style: BorderStyle.solid,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(21)),
+              borderRadius: BorderRadius.all(Radius.circular(60)),
             ),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
@@ -93,7 +97,7 @@ class CustomTextFormField extends StatelessWidget {
                 width: 3.0,
                 style: BorderStyle.solid,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(21)),
+              borderRadius: BorderRadius.all(Radius.circular(60)),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: BorderSide(
@@ -101,7 +105,7 @@ class CustomTextFormField extends StatelessWidget {
                 width: 3.0,
                 style: BorderStyle.solid,
               ),
-              borderRadius: const BorderRadius.all(Radius.circular(21)),
+              borderRadius: const BorderRadius.all(Radius.circular(60)),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderSide: BorderSide(
@@ -109,7 +113,7 @@ class CustomTextFormField extends StatelessWidget {
                 width: 3.0,
                 style: BorderStyle.solid,
               ),
-              borderRadius: const BorderRadius.all(Radius.circular(21)),
+              borderRadius: const BorderRadius.all(Radius.circular(60)),
             ),
           ),
           style: const TextStyle(

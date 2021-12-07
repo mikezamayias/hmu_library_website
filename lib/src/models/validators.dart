@@ -70,7 +70,7 @@ String? isValidPhoneNumber(String value) {
 
 String? isValidConfirmPassword(String password, String confirmPassword) {
   if (confirmPassword.isEmpty) {
-    return 'Confirm password is required';
+    return 'Password is required';
   }
   if (password != confirmPassword) {
     return 'Passwords do not match';

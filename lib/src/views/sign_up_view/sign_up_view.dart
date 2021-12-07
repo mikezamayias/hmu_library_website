@@ -34,83 +34,84 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return ViewBlueprint(
-      child: Form(
-        key: _formKey,
-        child: Stepper(
-          type: StepperType.horizontal,
-          elevation: 15,
-          currentStep: _currentStep,
-          steps: getSteps(),
-          onStepContinue: () {
-            setState(() {
-              if (_currentStep < getSteps().length - 1) {
-                _currentStep = _currentStep + 1;
-              } else {
-                _currentStep = 0;
-              }
-            });
-          },
-          onStepCancel: () {
-            setState(() {
-              if (_currentStep > 0) {
-                _currentStep = _currentStep - 1;
-              } else {
-                _currentStep = 0;
-              }
-            });
-          },
-          onStepTapped: (step) {
-            setState(() {
-              _currentStep = step;
-            });
-          },
-          controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                if (_currentStep > 0)
-                  CustomElevatedButton(
-                    label: 'Back',
-                    onPressed: onStepCancel,
-                  ),
-                if (_currentStep < getSteps().length - 1)
-                  CustomElevatedButton(
-                    label: 'Next',
-                    onPressed: onStepContinue,
-                  ),
-                if (_currentStep == getSteps().length - 1)
-                  CustomElevatedButton(
-                    label: 'Finish',
-                    onPressed: () {
-                      if (_agreed && _formKey.currentState!.validate()) {
-                        _showDialog(
-                          context,
-                          'Sign up successful',
-                          'You have signed up successfully. Please check your email to verify your account.',
-                          [
-                            CustomElevatedButton(
-                              label: 'OK',
-                              onPressed: () => Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const HomeView(),
+      child: Expanded(
+        child: Form(
+          key: _formKey,
+          child: Stepper(
+            elevation: 15,
+            currentStep: _currentStep,
+            steps: getSteps(),
+            onStepContinue: () {
+              setState(() {
+                if (_currentStep < getSteps().length - 1) {
+                  _currentStep = _currentStep + 1;
+                } else {
+                  _currentStep = 0;
+                }
+              });
+            },
+            onStepCancel: () {
+              setState(() {
+                if (_currentStep > 0) {
+                  _currentStep = _currentStep - 1;
+                } else {
+                  _currentStep = 0;
+                }
+              });
+            },
+            onStepTapped: (step) {
+              setState(() {
+                _currentStep = step;
+              });
+            },
+            controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  if (_currentStep > 0)
+                    CustomElevatedButton(
+                      label: 'Back',
+                      onPressed: onStepCancel,
+                    ),
+                  if (_currentStep < getSteps().length - 1)
+                    CustomElevatedButton(
+                      label: 'Next',
+                      onPressed: onStepContinue,
+                    ),
+                  if (_currentStep == getSteps().length - 1)
+                    CustomElevatedButton(
+                      label: 'Finish',
+                      onPressed: () {
+                        if (_agreed && _formKey.currentState!.validate()) {
+                          _showDialog(
+                            context,
+                            'Sign up successful',
+                            'You have signed up successfully. Please check your email to verify your account.',
+                            [
+                              CustomElevatedButton(
+                                label: 'OK',
+                                onPressed: () => Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const HomeView(),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        );
-                      } else {
-                        showToast(
-                          "You must agree to Terms of Service and Privacy Policy",
-                          context: context,
-                        );
-                      }
-                    },
-                  ),
-              ],
-            );
-          },
+                            ],
+                          );
+                        } else {
+                          showToast(
+                            "You must agree to Terms of Service and Privacy Policy",
+                            context: context,
+                          );
+                        }
+                      },
+                    ),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );
@@ -130,6 +131,7 @@ class _SignUpViewState extends State<SignUpView> {
               isRequiredField: true,
               hintText: 'Enter your email',
               onChanged: (value) => _formKey.currentState!.save(),
+              onFieldSubmitted: (value) => _formKey.currentState!.save(),
             ),
             CustomTextFormField(
               controller: _passwordController,
@@ -137,6 +139,7 @@ class _SignUpViewState extends State<SignUpView> {
               isRequiredField: true,
               hintText: 'Enter your password',
               onChanged: (value) => _formKey.currentState!.save(),
+              onFieldSubmitted: (value) => _formKey.currentState!.save(),
             ),
             CustomTextFormField(
               controller: _confirmPasswordController,
@@ -144,13 +147,14 @@ class _SignUpViewState extends State<SignUpView> {
               isRequiredField: true,
               hintText: 'Confirm your password',
               onChanged: (value) => _formKey.currentState!.save(),
+              onFieldSubmitted: (value) => _formKey.currentState!.save(),
               confirmPassword: _passwordController.text,
             ),
           ],
         ),
       ),
       Step(
-        state: _currentStep > 1 ? StepState.complete : StepState.editing,
+        state: _currentStep > 1 ? StepState.complete : StepState.indexed,
         isActive: _currentStep >= 1,
         title: const Text('Personal Details'),
         content: Wrap(
@@ -188,7 +192,7 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
       Step(
-        state: _currentStep > 2 ? StepState.complete : StepState.editing,
+        state: _currentStep > 2 ? StepState.complete : StepState.indexed,
         isActive: _currentStep >= 2,
         title: const Text('Address'),
         content: Wrap(
@@ -225,7 +229,7 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
       Step(
-        state: _currentStep > 3 ? StepState.complete : StepState.editing,
+        state: _currentStep > 3 ? StepState.complete : StepState.indexed,
         isActive: _currentStep >= 3,
         title: const Text('Terms and Conditions'),
         content: Wrap(
