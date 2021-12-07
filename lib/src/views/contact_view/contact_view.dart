@@ -17,6 +17,65 @@ class _ContactPageState extends State<ContactPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
 
+  @override
+  Widget build(BuildContext context) {
+    return PageBlueprint(
+      child: Stepper(
+        elevation: 9,
+        onStepCancel: _decrementStep,
+        onStepContinue: _incrementStep,
+        steps: <Step>[
+          Step(
+            title: const Text('Name'),
+            content: CustomTextFormField(
+              controller: _nameController,
+              hintText: 'Enter your name',
+              labelText: 'Name',
+            ),
+          ),
+          Step(
+            title: const Text('Email'),
+            content: CustomTextFormField(
+              controller: _emailController,
+              hintText: 'Enter your email',
+              labelText: 'Email',
+            ),
+          ),
+          Step(
+            title: const Text('Text'),
+            content: CustomTextFormField(
+              width: MediaQuery.of(context).size.width * 0.8,
+              controller: _textController,
+              hintText: 'Enter your message',
+              labelText: 'Text',
+            ),
+          ),
+        ],
+        currentStep: _currentStep,
+        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+          return Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: CustomElevatedButton(
+                  onPressed: onStepCancel,
+                  label: 'Back',
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: CustomElevatedButton(
+                  onPressed: onStepContinue,
+                  label: _currentStep != 2 ? 'Continue' : 'Submit',
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
   _incrementStep() {
     if (_currentStep < 2) {
       if (_nameController.text.isNotEmpty &&
@@ -26,78 +85,17 @@ class _ContactPageState extends State<ContactPage> {
           _currentStep++;
         });
       }
+    } else {
+      _showDialog(context);
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return PageBlueprint(
-      child: Center(
-        child: Stepper(
-          elevation: 9,
-          onStepCancel: _incrementStep,
-          onStepContinue: _incrementStep,
-          steps: <Step>[
-            Step(
-              title: const Text('Name'),
-              content: CustomTextFormField(
-                controller: _nameController,
-                hintText: 'Enter your name',
-                labelText: 'Name',
-                onFieldSubmitted: _incrementStep(),
-                onEditingComplete: _incrementStep,
-              ),
-            ),
-            Step(
-              title: const Text('Email'),
-              content: CustomTextFormField(
-                controller: _emailController,
-                hintText: 'Enter your email',
-                labelText: 'Email',
-                onFieldSubmitted: _incrementStep(),
-                onEditingComplete: _incrementStep,
-              ),
-            ),
-            Step(
-              title: const Text('Text'),
-              content: CustomTextFormField(
-                width: MediaQuery.of(context).size.width * 0.8,
-                controller: _textController,
-                hintText: 'Enter your message',
-                labelText: 'Text',
-                onFieldSubmitted: (value) => _showDialog(context),
-                onEditingComplete: () => _showDialog(context),
-              ),
-            ),
-          ],
-          currentStep: _currentStep,
-          controlsBuilder: (
-            BuildContext context, {
-            VoidCallback? onStepContinue,
-            VoidCallback? onStepCancel,
-          }) {
-            return Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: CustomElevatedButton(
-                    onPressed: onStepCancel,
-                    label: 'Cancel',
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: CustomElevatedButton(
-                    onPressed: onStepContinue,
-                    label: _currentStep != 2 ? 'Continue' : 'Submit',
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-    );
+  _decrementStep() {
+    if (_currentStep > 0) {
+      setState(() {
+        _currentStep--;
+      });
+    }
   }
 
   _showDialog(BuildContext context) {
@@ -112,7 +110,9 @@ class _ContactPageState extends State<ContactPage> {
           actions: <Widget>[
             CustomElevatedButton(
               label: 'OK',
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).popUntil((route) => route.isFirst);
+              },
             ),
           ],
         ),
