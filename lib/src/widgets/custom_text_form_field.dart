@@ -3,7 +3,7 @@ import 'package:recase/recase.dart';
 
 import '../models/validators.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final String hintText;
@@ -26,39 +26,33 @@ class CustomTextFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  @override
   Widget build(BuildContext context) {
-    final String _fieldType = widget.labelText.camelCase;
+    final String _fieldType =
+        validateField.keys.contains(labelText.camelCase)
+            ? labelText.camelCase
+            : 'else';
+    print('_CustomTextFormFieldState._fieldType: $_fieldType');
+    print('validateField.keys: ${validateField.keys}');
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SizedBox(
-        height: widget.height ?? MediaQuery.of(context).size.height * 0.15,
-        width: widget.width ?? MediaQuery.of(context).size.width * 0.24,
+        height: height ?? MediaQuery.of(context).size.height * 0.15,
+        width: width ?? MediaQuery.of(context).size.width * 0.24,
         child: TextFormField(
-          obscureText: _fieldType
-                  .trim()
-                  .replaceAll(RegExp(r' '), '')
-                  .contains('password')
-              ? true
-              : false,
-          onChanged: widget.onChanged ?? (value) {},
-          onEditingComplete: widget.onEditingComplete ?? () {},
-          onFieldSubmitted: widget.onFieldSubmitted ?? (value) {},
+          obscureText: _fieldType.contains('password') ? true : false,
+          onChanged: onChanged ?? (value) {},
+          onEditingComplete: onEditingComplete ?? () {},
+          onFieldSubmitted: onFieldSubmitted ?? (value) {},
           textAlignVertical: TextAlignVertical.center,
           textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) =>
-              validateField[_fieldType == '' ? _fieldType : 'else'](value),
-          controller: widget.controller,
+          validator: (value) => validateField[_fieldType](value),
+          controller: controller,
           cursorColor: const Color(0xFF1A4859),
           decoration: InputDecoration(
             focusColor: const Color(0xFF1A4859),
-            labelText: widget.labelText,
-            hintText: widget.hintText,
+            labelText: labelText,
+            hintText: hintText,
             labelStyle: const TextStyle(
               color: Color(0xFFA9915D),
               fontSize: 18,
