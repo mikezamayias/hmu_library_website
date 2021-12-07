@@ -41,12 +41,15 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
             labelText: 'Search Term',
             hintText:
                 'Try different keywords! For example type "Python", then "C", then "Dart", etc.',
-            onChanged: (value) => setState(
-              () {
-                url =
-                    'https://books.googleapis.com/books/v1/volumes?q="$value"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
-                getBooks(url);
-              },
+            onChanged: (value) => Future.delayed(
+              const Duration(milliseconds: 150),
+              () => setState(
+                () {
+                  url =
+                      'https://books.googleapis.com/books/v1/volumes?q="$value"&subject=Computers&langRestrict=en&orderBy=relevance&alt=json';
+                  getBooks(url);
+                },
+              ),
             ),
           ),
           Padding(
@@ -58,30 +61,28 @@ class _BookCatalogPageState extends State<BookCatalogPage> {
               children: [
                 CustomTooltip(
                   message: 'Opens Google Play Books API Documentation',
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: CustomElevatedButton(
-                      label: 'API',
-                      onPressed: () async {
-                        String _googleApiLink =
-                            'https://developers.google.com/books/docs/v1/getting_started';
-                        if (!await launch(_googleApiLink)) {
-                          throw 'Could not launch _googleApiLink';
-                        }
-                      },
-                    ),
+                  child: CustomElevatedButton(
+                    label: 'API',
+                    onPressed: () async {
+                      String _googleApiLink =
+                          'https://developers.google.com/books/docs/v1/getting_started';
+                      if (!await launch(_googleApiLink)) {
+                        throw 'Could not launch _googleApiLink';
+                      }
+                    },
                   ),
                 ),
                 CustomTooltip(
                   message: 'Calls Google\'s Play Books API',
                   child: Padding(
                     padding: const EdgeInsets.all(15),
-                    child: Text(
+                    child: SelectableText(
                       url,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,
                         color: const Color(0xFF1A4859),
+                        fontWeight: FontWeight.w500,
                         fontFamily: GoogleFonts.firaCode().fontFamily,
                       ),
                     ),
