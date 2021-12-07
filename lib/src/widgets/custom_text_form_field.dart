@@ -8,6 +8,7 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final String hintText;
   final bool isRequiredField;
+  final String? confirmPassword;
   final Function(String)? onChanged;
   final double? height;
   final double? width;
@@ -20,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     required this.hintText,
     required this.isRequiredField,
+    this.confirmPassword,
     this.onChanged,
     this.height,
     this.width,
@@ -45,7 +47,9 @@ class CustomTextFormField extends StatelessWidget {
           textAlignVertical: TextAlignVertical.center,
           textAlign: TextAlign.start,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) => validateField[_fieldType](value),
+          validator: confirmPassword != null
+              ? (value) => validateField[labelText.camelCase](value, confirmPassword)
+              : (value) => validateField[_fieldType](value),
           controller: controller,
           cursorColor: const Color(0xFFA9915D),
           decoration: InputDecoration(
