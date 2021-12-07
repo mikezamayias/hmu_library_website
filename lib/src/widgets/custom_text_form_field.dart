@@ -55,6 +55,7 @@ class CustomTextFormField extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             isDense: true,
+            errorMaxLines: 3,
             errorStyle: TextStyle(
               color: Colors.red.shade700,
               fontWeight: FontWeight.w600,
