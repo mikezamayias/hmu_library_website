@@ -13,8 +13,7 @@ class CustomElevatedButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomElevatedButtonState createState() =>
-      _CustomElevatedButtonState();
+  _CustomElevatedButtonState createState() => _CustomElevatedButtonState();
 }
 
 class _CustomElevatedButtonState extends State<CustomElevatedButton> {
