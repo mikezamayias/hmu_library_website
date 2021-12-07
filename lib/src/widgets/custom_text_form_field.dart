@@ -55,11 +55,9 @@ class CustomTextFormField extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
             isDense: true,
-            errorMaxLines: 1,
-            errorText: null,
-            errorStyle: const TextStyle(
-              color: Colors.transparent,
-              fontSize: 0,
+            errorStyle: TextStyle(
+              color: Colors.red.shade700,
+              fontWeight: FontWeight.w600,
             ),
             alignLabelWithHint: true,
             focusColor: const Color(0xFFA9915D),
