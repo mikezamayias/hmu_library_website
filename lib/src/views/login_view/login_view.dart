@@ -100,6 +100,7 @@ _showDialog(
         titleTextStyle: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
+          color: Color(0xFF1A4859),
         ),
         content: Text(
           message,
