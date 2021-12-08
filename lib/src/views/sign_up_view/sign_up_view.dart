@@ -34,84 +34,89 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return ViewBlueprint(
-      child: Expanded(
-        child: Form(
-          key: _formKey,
-          child: Stepper(
-            elevation: 15,
-            currentStep: _currentStep,
-            steps: getSteps(),
-            onStepContinue: () {
-              setState(() {
-                if (_currentStep < getSteps().length - 1) {
-                  _currentStep = _currentStep + 1;
-                } else {
-                  _currentStep = 0;
-                }
-              });
-            },
-            onStepCancel: () {
-              setState(() {
-                if (_currentStep > 0) {
-                  _currentStep = _currentStep - 1;
-                } else {
-                  _currentStep = 0;
-                }
-              });
-            },
-            onStepTapped: (step) {
-              setState(() {
-                _currentStep = step;
-              });
-            },
-            controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  if (_currentStep > 0)
-                    CustomElevatedButton(
-                      label: 'Back',
-                      onPressed: onStepCancel,
-                    ),
-                  if (_currentStep < getSteps().length - 1)
-                    CustomElevatedButton(
-                      label: 'Next',
-                      onPressed: onStepContinue,
-                    ),
-                  if (_currentStep == getSteps().length - 1)
-                    CustomElevatedButton(
-                      label: 'Sign Up',
-                      onPressed: () {
-                        if (_agreed && _formKey.currentState!.validate()) {
-                          _showDialog(
-                            context,
-                            'Sign up successful',
-                            'You have signed up successfully. Please check your email to verify your account.',
-                            [
-                              CustomElevatedButton(
-                                label: 'OK',
-                                onPressed: () => Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        const HomeView(),
-                                  ),
+      child: Form(
+        key: _formKey,
+        child: Stepper(
+          elevation: 15,
+          currentStep: _currentStep,
+          steps: getSteps(),
+          onStepContinue: () {
+            setState(() {
+              if (_currentStep < getSteps().length - 1) {
+                _currentStep = _currentStep + 1;
+              } else {
+                _currentStep = 0;
+              }
+            });
+          },
+          onStepCancel: () {
+            setState(() {
+              if (_currentStep > 0) {
+                _currentStep = _currentStep - 1;
+              } else {
+                _currentStep = 0;
+              }
+            });
+          },
+          onStepTapped: (step) {
+            setState(() {
+              _currentStep = step;
+            });
+          },
+          controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                if (_currentStep > 0)
+                  CustomElevatedButton(
+                    label: 'Back',
+                    onPressed: onStepCancel,
+                  ),
+                if (_currentStep < getSteps().length - 1)
+                  CustomElevatedButton(
+                    label: 'Next',
+                    onPressed: onStepContinue,
+                  ),
+                if (_currentStep == getSteps().length - 1)
+                  CustomElevatedButton(
+                    label: 'Sign Up',
+                    onPressed: () {
+                      if (!_formKey.currentState!.validate()) {
+                        showToast(
+                          'You must fill in all fields',
+                          position: StyledToastPosition.center,
+                          backgroundColor: Colors.red.shade700,
+                        );
+                      } else if (!_agreed) {
+                        showToast(
+                          'You must agree to the terms and conditions',
+                          position: StyledToastPosition.center,
+                          backgroundColor: Colors.red.shade700,
+                        );
+                      } else {
+                        _showDialog(
+                          context,
+                          'Sign up successful',
+                          'You have signed up successfully. Please check your email to verify your account.',
+                          [
+                            CustomElevatedButton(
+                              label: 'OK',
+                              onPressed: () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const HomeView(),
                                 ),
                               ),
-                            ],
-                          );
-                        } else {
-                          showToast(
-                            "You must agree to Terms of Service and Privacy Policy",
-                            context: context,
-                          );
-                        }
-                      },
-                    ),
-                ],
-              );
-            },
-          ),
+                            ),
+                          ],
+                        );
+                      }
+                    },
+                  ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -154,6 +159,8 @@ class _SignUpViewState extends State<SignUpView> {
       Step(
         title: const Text('Personal Details'),
         content: Wrap(
+          runAlignment: WrapAlignment.start,
+          crossAxisAlignment: WrapCrossAlignment.start,
           children: [
             CustomTextFormField(
               controller: _firstNameController,
@@ -224,70 +231,73 @@ class _SignUpViewState extends State<SignUpView> {
       ),
       Step(
         title: const Text('Terms and Conditions'),
-        content: Wrap(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () => setState(() => _agreed = !_agreed),
-                  child: _agreed
-                      ? const Icon(
-                          Icons.check_box_rounded,
-                          color: Color(0xFF1A4859),
-                        )
-                      : const Icon(
-                          Icons.check_box_outline_blank_rounded,
-                          color: Color(0xFF1A4859),
-                        ),
-                ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      const TextSpan(
-                        text: 'By signing up, you agree to our ',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Terms of Service',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => showToast(
-                                "You agree to Terms of Service",
-                                context: context,
-                              ),
-                      ),
-                      const TextSpan(
-                        text: ' and ',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Privacy Policy',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => showToast(
-                                "You agree to Privacy Policy",
-                                context: context,
-                              ),
-                      ),
-                    ],
+        content: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Wrap(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => setState(() => _agreed = !_agreed),
+                    child: _agreed
+                        ? const Icon(
+                            Icons.check_box_rounded,
+                            color: Color(0xFF1A4859),
+                          )
+                        : const Icon(
+                            Icons.check_box_outline_blank_rounded,
+                            color: Color(0xFF1A4859),
+                          ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'By signing up, you agree to our ',
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Terms of Service',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => showToast(
+                                  "You agree to Terms of Service",
+                                  context: context,
+                                ),
+                        ),
+                        const TextSpan(
+                          text: ' and ',
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Privacy Policy',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => showToast(
+                                  "You agree to Privacy Policy",
+                                  context: context,
+                                ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     ];

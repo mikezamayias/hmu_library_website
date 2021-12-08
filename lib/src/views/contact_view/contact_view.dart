@@ -13,7 +13,6 @@ class ContactView extends StatefulWidget {
 }
 
 class _ContactViewState extends State<ContactView> {
-  int _currentStep = 0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -25,9 +24,7 @@ class _ContactViewState extends State<ContactView> {
       child: Form(
         key: _formKey,
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          
           children: [
             CustomTextFormField(
               controller: _nameController,
@@ -44,22 +41,20 @@ class _ContactViewState extends State<ContactView> {
               onChanged: (value) => _formKey.currentState!.save(),
             ),
             CustomTextFormField(
+              width: MediaQuery.of(context).size.width * 0.69,
               controller: _textController,
               labelText: 'Message',
               hintText: 'Enter your message',
               isRequiredField: true,
               onChanged: (value) => _formKey.currentState!.save(),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: CustomElevatedButton(
-                label: 'Submit',
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _showDialog(context);
-                  }
-                },
-              ),
+            CustomElevatedButton(
+              label: 'Submit',
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _showDialog(context);
+                }
+              },
             ),
           ],
         ),

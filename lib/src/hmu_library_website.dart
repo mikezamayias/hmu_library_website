@@ -7,6 +7,7 @@ import 'views/contact_view/contact_view.dart';
 import 'views/home_view/home_view.dart';
 import 'views/login_view/login_view.dart';
 import 'views/sign_up_view/sign_up_view.dart';
+import 'widgets/footer.dart';
 
 class HMULibraryWebsite extends StatefulWidget {
   const HMULibraryWebsite({Key? key}) : super(key: key);
@@ -72,6 +73,7 @@ class _HMULibraryWebsiteState extends State<HMULibraryWebsite>
           child: DefaultTabController(
             length: _tabs.length,
             child: Scaffold(
+              backgroundColor: const Color(0xFFEEE9DF),
               appBar: TabBar(
                 controller: _tabController,
                 tabs: _tabs,

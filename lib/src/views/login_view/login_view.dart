@@ -19,8 +19,8 @@ class LoginView extends StatelessWidget {
       child: Form(
         key: _formKey,
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomTextFormField(

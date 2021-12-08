@@ -20,24 +20,30 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
   @override
   Widget build(BuildContext context) {
     return widget.icon != null
-        ? ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(30)),
+        ? Padding(
+          padding: const EdgeInsets.all(15),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(60)),
             child: ElevatedButton.icon(
-              onPressed: widget.onPressed,
-              icon: Icon(widget.icon),
-              label: Text(
-                widget.label!,
+                onPressed: widget.onPressed,
+                icon: Icon(widget.icon),
+                label: Text(
+                  widget.label!,
+                ),
               ),
-            ),
-          )
-        : ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(30)),
+          ),
+        )
+        : Padding(
+          padding: const EdgeInsets.all(15),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(60)),
             child: ElevatedButton(
-              onPressed: widget.onPressed,
-              child: Text(
-                widget.label!,
+                onPressed: widget.onPressed,
+                child: Text(
+                  widget.label!,
+                ),
               ),
-            ),
-          );
+          ),
+        );
   }
 }
