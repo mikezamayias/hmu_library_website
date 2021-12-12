@@ -13,7 +13,7 @@ Map<String, dynamic> validateField = {
   'country': isValidCountry,
   'city': isValidCity,
   'studentId': isValidStudentId,
-  'else': null,
+  'else': isElse,
 };
 
 String? isValidEmail(String email) {
@@ -155,5 +155,9 @@ String? isValidStudentId(String value) {
     return 'Student ID must match the format of two letters followed by 4 '
         'digits';
   }
+  return null;
+}
+
+String? isElse(String value) {
   return null;
 }
