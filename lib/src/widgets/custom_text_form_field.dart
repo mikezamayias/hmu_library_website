@@ -14,6 +14,8 @@ class CustomTextFormField extends StatelessWidget {
   final double? width;
   final VoidCallback? onEditingComplete;
   final Function(String)? onFieldSubmitted;
+  final VoidCallback? onTap;
+  final Function(String?)? onSaved;
 
   const CustomTextFormField({
     Key? key,
@@ -27,6 +29,8 @@ class CustomTextFormField extends StatelessWidget {
     this.width,
     this.onEditingComplete,
     this.onFieldSubmitted,
+    this.onTap,
+    this.onSaved,
   }) : super(key: key);
 
   @override
@@ -35,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
         ? labelText.camelCase
         : 'else';
     return Padding(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(30),
       child: SizedBox(
         height: height ?? MediaQuery.of(context).size.height * 0.15,
         width: width ?? MediaQuery.of(context).size.width * 0.24,
@@ -44,6 +48,8 @@ class CustomTextFormField extends StatelessWidget {
               _fieldType.contains('password') || _fieldType.contains('Password')
                   ? true
                   : false,
+          onTap: onTap ?? () {},
+          onSaved: onSaved ?? (value) {},
           onChanged: onChanged ?? (value) {},
           onEditingComplete: onEditingComplete ?? () {},
           onFieldSubmitted: onFieldSubmitted ?? (value) {},
