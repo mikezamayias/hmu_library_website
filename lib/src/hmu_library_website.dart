@@ -7,7 +7,6 @@ import 'views/contact_view/contact_view.dart';
 import 'views/home_view/home_view.dart';
 import 'views/login_view/login_view.dart';
 import 'views/sign_up_view/sign_up_view.dart';
-import 'widgets/footer.dart';
 
 class HMULibraryWebsite extends StatefulWidget {
   const HMULibraryWebsite({Key? key}) : super(key: key);

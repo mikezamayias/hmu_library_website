@@ -24,7 +24,6 @@ class _ContactViewState extends State<ContactView> {
       child: Form(
         key: _formKey,
         child: Column(
-          
           children: [
             CustomTextFormField(
               controller: _nameController,
